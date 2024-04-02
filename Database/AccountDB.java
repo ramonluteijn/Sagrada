@@ -30,10 +30,12 @@ public class AccountDB {
                     System.out.println("bestaat");
                 }
             } catch (SQLException e) {
-                 e.getMessage();
+                System.out.println(e.getMessage());
             }
         }
     }
+
+
 
     public boolean checkIfUserExists(String username) {
         boolean exist = true;
@@ -50,7 +52,7 @@ public class AccountDB {
                 }
                 stmt.close();
             } catch (SQLException e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
             }
         }
         return exist;
@@ -80,7 +82,10 @@ public class AccountDB {
     public int getWinAmount(String username) {//TODO
         int win = 0;
         if (conn.makeConnection()) {
-            String query = "select count(player.idgame) from player inner join playstatus on player.playstatus = playstatus where playstatus = 'finished' AND username='"+username+"' order by player.score desc;";
+            String query =
+                    "select count(player.idgame) from player " +
+                    "inner join playstatus on player.playstatus = playstatus " +
+                    "where playstatus = 'finished' AND username='"+username+"' order by player.score desc;";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -101,7 +106,10 @@ public class AccountDB {
     public int getLossAmount(String username) { //TODO
         int loss = 0;
         if (conn.makeConnection()) {
-            String query = "select count(player.idgame) from player inner join playstatus on player.playstatus = playstatus where playstatus = 'finished' AND username='"+username+"' order by player.score desc;";
+            String query =
+                    "select count(player.idgame) from player " +
+                    "inner join playstatus on player.playstatus = playstatus " +
+                    "where playstatus = 'finished' AND username='"+username+"' order by player.score desc;";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -122,7 +130,10 @@ public class AccountDB {
     public int getHighscore(String username) {
         int highscore = 0;
         if (conn.makeConnection()) {
-            String query = "select max(player.score) as highscore from player inner join playstatus on player.playstatus = playstatus where playstatus = 'finished' AND username='"+username+"';";
+            String query =
+                    "select max(player.score) as highscore " +
+                    "from player inner join playstatus on player.playstatus = playstatus " +
+                    "where playstatus = 'finished' AND username='"+username+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -159,8 +170,8 @@ public class AccountDB {
         if (conn.makeConnection()) {
             String query =
                     "select count(playerframefield.dienumber) as number from player" +
-                            "inner join playerframefield on playerframefield.idplayer = player.idplayer" +
-                            "where username='"+username+"'group by playerframefield.dienumber order by count(playerframefield.dienumber) desc limit 1;";
+                    "inner join playerframefield on playerframefield.idplayer = player.idplayer" +
+                    "where username='"+username+"'group by playerframefield.dienumber order by count(playerframefield.dienumber) desc limit 1;";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);

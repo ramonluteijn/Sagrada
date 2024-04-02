@@ -11,7 +11,7 @@ public class DBConn {
         makeConnection();
     }
 
-    public boolean loadDataBaseDriver(String driverName)
+    private boolean loadDataBaseDriver(String driverName)
     {
         try {
             Class.forName(driverName);
@@ -39,5 +39,3 @@ public class DBConn {
         return conn;
     }
 }
-
-

@@ -11,7 +11,7 @@ public class Main extends Application{
 //        launch(args);
         DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
         AccountDB acc = new AccountDB(conn);
-        acc.getAccount("ramon2", "123452");
+        acc.getAccount("ramon2", "test");
 
     }
 
