@@ -22,7 +22,6 @@ public class ToolcardDB {
                     String name = rs.getString("name");
                     String seqnr = rs.getString("seqnr");
                     System.out.println(seqnr+ " - " + name);
-
                 }
                 stmt.close();
             } catch (SQLException e) {

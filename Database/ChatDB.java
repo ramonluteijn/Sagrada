@@ -20,12 +20,8 @@ public class ChatDB {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    //doormiddel van kolomnaam
                     String name = rs.getString("color");
                     String number = rs.getString("number");
-
-                    //doormiddel van kolomnummer
-                    //String satOf = rs.getString(1);
                     System.out.println(number+ " - " + name + ", satellite of ");
                 }
                 stmt.close();
