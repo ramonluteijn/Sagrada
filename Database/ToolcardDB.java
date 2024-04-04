@@ -1,5 +1,7 @@
 package Database;
 
+import Model.Toolcard;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,7 +33,8 @@ public class ToolcardDB {
         }
     }
 
-    public void getGameToolcard(int gameId) {
+    public Toolcard getGameToolcard(int gameId) {
+        Toolcard toolcard = null;
         if (conn.makeConnection()) {
             String query = "select * from gametoolcard inner join toolcard on gametoolcard.idtoolcard = toolcard.idtoolcard where idgame = '"+gameId+"';";
             try {
@@ -39,16 +42,18 @@ public class ToolcardDB {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    String seqnr = rs.getString("seqnr");
+                    int id = rs.getInt("idtoolcard");
+                    int seqnr = rs.getInt("seqnr");
                     String name = rs.getString("name");
                     String description = rs.getString("description");
-                    System.out.println(seqnr + " - " + name + " - " + description);
+                    toolcard = new Toolcard(id,seqnr,name,description);
                 }
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
         }
+        return toolcard;
     }
 
     public void insertGameToolcard(int gameId, int toolcardId) {

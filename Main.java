@@ -12,7 +12,6 @@ public class Main extends Application{
         DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
         AccountDB acc = new AccountDB(conn);
         acc.getAccount("ramon2", "test");
-
     }
 
 //    @Override
