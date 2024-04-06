@@ -12,7 +12,7 @@ public class Toolcard {
         this.description = description;
     }
     public void setId(int id) {
-        this.seqnr = seqnr;
+        this.id = id;
     }
     public void setSeqnr(int seqnr) {
         this.seqnr = seqnr;

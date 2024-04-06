@@ -1,14 +1,12 @@
 package Database;
 
+import Model.Toolcard;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
-/*
-TODO
-parameter strings veranderen naar account zelf
-getaccount moet acc terug geven geen string
-*/
 public class AccountDB {
     private DBConn conn;
 
@@ -34,7 +32,6 @@ public class AccountDB {
             }
         }
     }
-
 
 
     public boolean checkIfUserExists(String username) {
@@ -79,21 +76,47 @@ public class AccountDB {
         return account;
     }
 
-    public int getWinAmount(String username) {//TODO
-        int win = 0;
+    public String getAccountsBySearch(String username) {
+        String account = "";
         if (conn.makeConnection()) {
-            String query =
-                    "select count(player.idgame) from player " +
-                    "inner join playstatus on player.playstatus = playstatus " +
-                    "where playstatus = 'finished' AND username='"+username+"' order by player.score desc;";
+            String query = "select * from account where username='%"+username+"%';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
                     String name = rs.getString("username");
-                    String pw = rs.getString("password");
-//                    System.out.println(win = name + pw);
+                    System.out.println(account = name);
+                }
+                stmt.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return account;
+    }
+
+    // welke username?
+    // welk spel?
+    // welke spelers nemen deel?
+    // wat is de highscore van dat spel ?
+    // is de highscore de username?
+
+    public int getWinAmount(String username) {
+        int win = 0;
+        if (conn.makeConnection()) {
+            String query =
+                    "select count(p1.idgame) as wins from player as p1 " +
+                    "inner join game on p1.idgame = game.idgame " +
+                    "inner join player as p2 on game.idgame = p2.idplayer " +
+                    "inner join playstatus on p1.playstatus = playstatus.playstatus " +
+                    "where p1.username name='"+username+"'AND playstatus = 'finished' order by p2.score desc";
+            try {
+                Statement stmt = conn.getConn().createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next())
+                {
+                    win = rs.getInt("wins");
                 }
                 stmt.close();
             } catch (SQLException e) {
@@ -103,7 +126,7 @@ public class AccountDB {
         return win;
     }
 
-    public int getLossAmount(String username) { //TODO
+    public int getLossAmount(String username) {
         int loss = 0;
         if (conn.makeConnection()) {
             String query =
