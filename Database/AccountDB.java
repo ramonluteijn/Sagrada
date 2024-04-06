@@ -79,7 +79,8 @@ public class AccountDB {
     public String getAccountsBySearch(String username) {
         String account = "";
         if (conn.makeConnection()) {
-            String query = "select * from account where username='%"+username+"%';";
+            String query = "select * from account where username like '%"+username+"%';";
+            System.out.println(query);
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);

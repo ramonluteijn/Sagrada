@@ -3,6 +3,7 @@ package Database;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class PlayerDB {
     private DBConn conn;
@@ -63,5 +64,28 @@ public class PlayerDB {
             }
         }
         return player;
+    }
+
+    public ArrayList<String> getPlayersInGame(int gameId) {
+        ArrayList<String>players = new ArrayList<String>();
+        if (conn.makeConnection()) {
+            String query = "select * from player where idgame='"+gameId+"';";
+            try {
+                Statement stmt = conn.getConn().createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next())
+                {
+                    String name = rs.getString("username");
+                    String seqnr = rs.getString("seqnr");
+                    String patterncardId = rs.getString("idpatterncard");
+                    String score = rs.getString("score");
+                    System.out.println(players.add(name + seqnr + patterncardId + score));
+                }
+                stmt.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return players;
     }
 }
