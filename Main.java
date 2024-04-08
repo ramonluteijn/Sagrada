@@ -19,6 +19,7 @@ public class Main extends Application{
         stage.setTitle("Sagrada");
         stage.setScene(new Scene(new Pane()));
         stage.show();
+        // halllo
     }
 }
 
