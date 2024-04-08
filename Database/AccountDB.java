@@ -55,7 +55,7 @@ public class AccountDB {
         return exist;
     }
 
-    public String getAccount(String username, String password) {
+    public void getAccount(String username, String password) {
         String account = "";
         if (conn.makeConnection()) {
             String query = "select * from account where username='"+username+"' AND password='"+password+"';";
@@ -66,15 +66,17 @@ public class AccountDB {
                 {
                     String name = rs.getString("username");
                     String pw = rs.getString("password");
-                    System.out.println(account = name + pw);
+                    account = name + pw;
                 }
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
+                account = "bestaat niet";
             }
         }
-        return account;
+        System.out.println(account);
     }
+
 
     public String getAccountsBySearch(String username) {
         String account = "";
