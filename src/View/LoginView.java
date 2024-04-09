@@ -18,14 +18,25 @@ public class LoginView extends HBox {
     private MyScene scene;
     private TextField username;
     private TextField password;
+    
     public LoginView(MyScene scene) {
+    	
+    	//comments zo weghalen, is ff voor mezelf
+    	
+    	//scene correctzetten
         this.scene = scene;
+        
+        //Elementen aanmaken
         Button login = new Button("Login");
         Button register = new Button("Register");
         username = new TextField();
         password = new TextField();
+        
+        //layout bepalen
         VBox layoutY = new VBox();
         HBox layoutX = new HBox();
+        
+        //meer elementen
         VBox formPos = new VBox();
         VBox form = new VBox();
         HBox buttons = new HBox();
@@ -33,12 +44,14 @@ public class LoginView extends HBox {
         Label forUsername = new Label("Username:");
         Label forPassword = new Label("Password:");
 
+        //elementen toevoegen aan layouts
         layoutY.getChildren().add(layoutX);
         layoutX.getChildren().addAll(formPos);
         formPos.getChildren().addAll(banner, form);
         form.getChildren().addAll(forUsername,username,forPassword,password,buttons);
         buttons.getChildren().addAll(login, register);
 
+        //layouts goedzetten
         layoutY.setAlignment(Pos.CENTER);
         layoutX.setAlignment(Pos.CENTER);
         buttons.setAlignment(Pos.CENTER);

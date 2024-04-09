@@ -24,3 +24,13 @@ dan kan de ander weer verder met het afronden van dat stukje.
 
 - werk op een overzichterlijke manier.
 ## good luck have fun :)
+
+
+Voor eclipse
+	- compiler aanpassen 1.8
+	
+
+
+
+
+
