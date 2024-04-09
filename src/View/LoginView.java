@@ -21,7 +21,7 @@ public class LoginView extends HBox {
     
     public LoginView(MyScene scene) {
     	
-    	//comments zo weghalen, is ff voor mezelf
+    	//comments zo weghalen, is ff voor mezelf (Bram)
     	
     	//scene correctzetten
         this.scene = scene;
