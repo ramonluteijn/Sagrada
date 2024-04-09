@@ -23,7 +23,4 @@ dan kan de ander weer verder met het afronden van dat stukje.
 - geef aan wanneer je dingen wilt samen gaan voegen / af zijn zodat het project tot een geheel kan worden gemaakt.
 
 - werk op een overzichterlijke manier.
-
-- kopieren van internet kan, maar zorg dan wel dat je snapt wat het allemaal doet. we moeten het namelijk allemaal kunnen uitleggen.
-
 ## good luck have fun :)
