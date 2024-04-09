@@ -1,11 +1,8 @@
 package Database;
 
-import Model.Toolcard;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class AccountDB {
     private DBConn conn;
