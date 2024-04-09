@@ -132,7 +132,7 @@ public class AccountDB {
         }
         return win;
     }
-
+effe
     public int getLossAmount(String username) {
         int loss = 0;
         if (conn.makeConnection()) {
