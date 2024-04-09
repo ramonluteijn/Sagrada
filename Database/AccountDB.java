@@ -117,8 +117,7 @@ public class AccountDB {
                     "select count(p1.idgame) as wins from player as p1 " +
                     "inner join game on p1.idgame = game.idgame " +
                     "inner join player as p2 on game.idgame = p2.idplayer " +
-                    "inner join playstatus on p1.playstatus = playstatus.playstatus " +
-                    "where p1.username name='"+username+"'AND playstatus = 'finished' order by p2.score desc";
+                    "where p1.username name='"+username+"'order by p2.score desc";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -139,8 +138,7 @@ public class AccountDB {
         if (conn.makeConnection()) {
             String query =
                     "select count(player.idgame) from player " +
-                    "inner join playstatus on player.playstatus = playstatus " +
-                    "where playstatus = 'finished' AND username='"+username+"' order by player.score desc;";
+                    "where username='"+username+"' order by player.score desc;";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
@@ -163,8 +161,8 @@ public class AccountDB {
         if (conn.makeConnection()) {
             String query =
                     "select max(player.score) as highscore " +
-                    "from player inner join playstatus on player.playstatus = playstatus " +
-                    "where playstatus = 'finished' AND username='"+username+"';";
+                    "from player " +
+                    "where username='"+username+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
