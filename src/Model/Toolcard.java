@@ -1,4 +1,4 @@
-package src.Model;
+package Model;
 
 public class Toolcard {
     private int id;
