@@ -17,6 +17,7 @@ public class Main extends Application{
     public void start(Stage stage) throws Exception {
         stage.setTitle("Sagrada");
         stage.setScene(new MyScene());
+        stage.setMaximized(true);
         stage.show();
     }
 }
