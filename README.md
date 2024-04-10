@@ -23,4 +23,18 @@ dan kan de ander weer verder met het afronden van dat stukje.
 - geef aan wanneer je dingen wilt samen gaan voegen / af zijn zodat het project tot een geheel kan worden gemaakt.
 
 - werk op een overzichterlijke manier.
+
+
+
+
+Voor eclipse:
+- compiler aanpassen
+- dingen in de src package doen
+- database jar toevoegen
+- ding op jdk zetten ofzo
+
 ## good luck have fun :)
+
+
+
+

@@ -1,16 +1,12 @@
-import Database.AccountDB;
-import Database.DBConn;
-import Database.PlayerDB;
+package Controller;
 import View.MyScene;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
     public static void main(String[] args) {
         launch(args);
-        DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
+//        DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
     }
 
 //    @Override
@@ -18,8 +14,7 @@ public class Main extends Application{
         stage.setTitle("Sagrada");
         stage.setScene(new MyScene());
         stage.show();
-        // halllo
-        //as;ofi jasd;lfjas;ldkfjasdf
+        
     }
 }
 
