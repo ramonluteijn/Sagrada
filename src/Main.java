@@ -2,8 +2,8 @@ package src;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import src.Database.DBConn;
-import src.View.MyScene;
+import DBConn;
+import MyScene;
 
 public class Main extends Application{
     public static void main(String[] args) {

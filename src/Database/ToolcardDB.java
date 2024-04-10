@@ -1,6 +1,6 @@
-package src.Database;
+package Database;
 
-import src.Model.Toolcard;
+import Toolcard;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

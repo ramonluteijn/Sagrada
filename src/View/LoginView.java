@@ -1,4 +1,4 @@
-package src.View;
+package View;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,8 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import src.Database.AccountDB;
-import src.Database.DBConn;
+import AccountDB;
+import DBConn;
 
 
 public class LoginView extends HBox {
