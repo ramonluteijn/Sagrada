@@ -1,4 +1,4 @@
-package Database;
+package src.Database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,6 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class PlayerDB {
+
+
     private DBConn conn;
 
     public PlayerDB(DBConn conn){

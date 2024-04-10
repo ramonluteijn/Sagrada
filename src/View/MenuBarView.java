@@ -1,4 +1,4 @@
-package View;
+package src.View;
 
 import javafx.geometry.Insets;
 import javafx.scene.layout.HBox;
