@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
@@ -22,7 +21,7 @@ public class PatternView extends BorderPane{
 		this.selectPatternView = selectPatternView;
 		
 		this.setBackground(new Background(new BackgroundFill(Color.ALICEBLUE,null ,null)));
-//		this.setMinSize(200,  200);
+
 		
 		
 
@@ -42,7 +41,13 @@ public class PatternView extends BorderPane{
 	}
 
 	private GridPane getPattern() {
+		
 		GridPane pattern = new GridPane();
+		
+		
+		pattern.prefHeightProperty().bind(selectPatternView.heightProperty().divide(3));
+		pattern.prefWidthProperty().bind(selectPatternView.heightProperty().divide(3));
+		
 		
 		pattern.setBackground(new Background(new BackgroundFill(Color.LIGHTCORAL, null, null)));
 		Random rand = new Random();
@@ -51,8 +56,9 @@ public class PatternView extends BorderPane{
 			for (int x = 0; x < 5; x++) {
 				Color COLOR = Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
 				int VALUE = rand.nextInt(7);
+				PatternCardFieldView field = new PatternCardFieldView(COLOR, VALUE);
 				
-				pattern.add(new PatternCardFieldView(COLOR, VALUE), x, y);
+				pattern.add(field, x, y);
 				
 			}
 		}
@@ -79,7 +85,6 @@ public class PatternView extends BorderPane{
 	}
 
 	private void selected() {
-		System.out.println(this.prefHeightProperty().getValue());
 		System.out.println("selected, " + this);
 		selectPatternView.setSelectedPatternCard(this);
 	}

@@ -16,32 +16,41 @@ import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public class SelectPatternView extends BorderPane{
 	private PatternView selectedPatternCard = null;
-	private Button selectButton = new Button("Select a patterncard.");;
+	private Button selectButton = new Button("Continue");;
 	
 	public SelectPatternView(){
 
 		this.setTop(getMenuBar());
 		this.setCenter(getChooseCardsPane());
 		this.setBottom(getSelectButton());
+		this.setMinSize(400,  400);
 		this.setPrefSize(1000, 800);
 		this.setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
 		
+		
 	}
 
-	private StackPane getSelectButton() {
-		StackPane buttonPane = new StackPane();
+	private HBox getSelectButton() {
+		HBox buttonPane = new HBox();
 		buttonPane.setAlignment(Pos.CENTER);
+		
+		
+
 		
 		selectButton.setPrefSize(150, 90);
 		selectButton.setDisable(true);
 		selectButton.setOnAction(e -> selected());
 		
-		buttonPane.getChildren().add(selectButton);
+		Text selectText = new Text("Select a patterncard    ");
+		
+		
+		buttonPane.getChildren().addAll(selectText, selectButton);
 		
 		return buttonPane;
 	}
@@ -52,17 +61,13 @@ public class SelectPatternView extends BorderPane{
 
 	private GridPane getChooseCardsPane() {
 		GridPane cards = new GridPane();
-//		cards.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+
+
 		cards.setHgap(20);
 		cards.setVgap(20);
-		cards.setAlignment(Pos.CENTER);
+		cards.setAlignment(Pos.TOP_CENTER);
 		cards.setPadding(new Insets(10, 10, 10, 10));
-		
-		
-		
-
-		cards.maxHeightProperty().bind(this.prefHeightProperty());
-		cards.maxWidthProperty().bind(cards.maxHeightProperty());
+		System.out.println(this.prefHeightProperty());
 		
 		cards.add(new PatternView(this), 0, 0);
 		cards.add(new PatternView(this), 1, 0);
@@ -94,6 +99,5 @@ public class SelectPatternView extends BorderPane{
 		this.selectedPatternCard.setBorder(new Border(new BorderStroke(Color.BLACK, 
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THICK))); // sets a border when selected.
 		selectButton.setDisable(false);
-		selectButton.setText("Continue");
 	}
 }
