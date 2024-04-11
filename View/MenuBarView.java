@@ -37,7 +37,7 @@ public class MenuBarView extends HBox {
     }
 
     private void logOutButton(MyScene scene){
-        //scene.openLoginView();
+        scene.openLoginView();
         //accountController.logOut();
     }
 }
