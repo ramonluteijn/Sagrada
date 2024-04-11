@@ -11,13 +11,27 @@ public class SearchAccountView extends HBox{
 		this.scene = scene;
 		
 		SearchBarView searchBar = new SearchBarView();
+		PlayersView playersView = new PlayersView();
+		ResultsView resultsView = new ResultsView();
 		
 		VBox layoutY = new VBox();
-		HBox layoutX = new HBox();
 		
-		layoutY.getChildren().add(searchBar);
+		
+		
+		
+		
+		
+		
+		
+		//HBox layoutX = new HBox();
+		
+		layoutY.getChildren().addAll(searchBar, resultsView, playersView);
 		
 		this.getChildren().add(layoutY);
+		
+		playersView.addPlayer("Jonas");
+		playersView.addPlayer("Bob");
+		playersView.addPlayer("Frank");
 	}
 	
 }
