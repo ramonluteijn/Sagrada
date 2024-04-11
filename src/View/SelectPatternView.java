@@ -28,7 +28,7 @@ public class SelectPatternView extends BorderPane{
 
 		this.setTop(getMenuBar());
 		this.setCenter(getChooseCardsPane());
-		this.setBottom(getSelectButton());
+		this.setBottom(getFooter());
 		this.setMinSize(400,  400);
 		this.setPrefSize(1000, 800);
 		this.setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
@@ -36,9 +36,10 @@ public class SelectPatternView extends BorderPane{
 		
 	}
 
-	private HBox getSelectButton() {
-		HBox buttonPane = new HBox();
-		buttonPane.setAlignment(Pos.CENTER);
+	private HBox getFooter() {
+		HBox footer = new HBox();
+		footer.setAlignment(Pos.CENTER);
+		footer.setBackground(new Background(new BackgroundFill(Color.GREY, null, null)));
 		
 		
 
@@ -46,13 +47,14 @@ public class SelectPatternView extends BorderPane{
 		selectButton.setPrefSize(150, 90);
 		selectButton.setDisable(true);
 		selectButton.setOnAction(e -> selected());
+//		selectButton.setBackground(new Background(new BackgroundFill(Color.GREY, null, null)));
 		
 		Text selectText = new Text("Select a patterncard    ");
 		
 		
-		buttonPane.getChildren().addAll(selectText, selectButton);
+		footer.getChildren().addAll(selectText, selectButton);
 		
-		return buttonPane;
+		return footer;
 	}
 
 	private void selected() {
