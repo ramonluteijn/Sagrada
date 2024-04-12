@@ -1,10 +1,6 @@
-import Database.AccountDB;
 import Database.DBConn;
-import Database.PlayerDB;
 import View.MyScene;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
@@ -16,6 +12,7 @@ public class Main extends Application{
 //    @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Sagrada");
+        stage.setMaximized(true);
         stage.setScene(new MyScene());
         stage.show();
     }
