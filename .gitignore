@@ -27,3 +27,6 @@ replay_pid*
 out
 src/Database/DBConn.java
 Sagrada.iml
+*.project
+*.classpath
+.settings
