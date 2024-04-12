@@ -25,5 +25,9 @@ replay_pid*
 
 .idea
 out
-Database/DBConn.java
-/bin/
+
+src/Database/DBConn.java
+Sagrada.iml
+*.project
+*.classpath
+.settings
