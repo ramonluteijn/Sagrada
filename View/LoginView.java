@@ -68,6 +68,7 @@ public class LoginView extends BorderPane {
         buttons.setSpacing(20);
         buttons.getChildren().addAll(login, register);
 
+
         login.setPadding(new Insets(10,30,10,30));
         register.setPadding(new Insets(10,30,10,30));
         login.setFont(Font.font("Arial", 16));
@@ -78,6 +79,10 @@ public class LoginView extends BorderPane {
         return buttons;
     }
 
+//todo
+    // check pass brokee broke
+    // length check
+    // ww check is er niet
 
 
     public void loginUser() {
@@ -95,6 +100,7 @@ public class LoginView extends BorderPane {
 
     }
 
+    //check if exist fucked up
     public void registerUser() {
         //veranderen dmv controller etc
         DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
