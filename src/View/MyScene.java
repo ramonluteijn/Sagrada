@@ -8,9 +8,8 @@ public class MyScene extends Scene {
     private Pane root;
     public MyScene() {
         super(new Pane());
-        root = new Pane();
-        root.getChildren().add(new LoginView(this));
-
+        //root = new SelectPatternView();
+        root = new LoginView(this);
         this.setRoot(root);
     }
 

@@ -11,7 +11,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-
 public class LoginView extends BorderPane {
     private MyScene scene;
     private TextField username;
