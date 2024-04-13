@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -32,9 +33,9 @@ public class LoginView extends BorderPane {
     private VBox getForm() {
         VBox form = new VBox();
         username = new TextField();
-        password = new TextField();
+        password = new PasswordField();
         Label banner = new Label("SAGRADA");
-        failedLabel = new Label("Please login to your account.");
+        failedLabel = new Label(" Log in om door te gaan.");
 
         failedLabel.setMaxWidth(Double.MAX_VALUE);
         failedLabel.setAlignment(Pos.CENTER);
@@ -50,8 +51,8 @@ public class LoginView extends BorderPane {
 
         username.setPadding(new Insets(5));
         password.setPadding(new Insets(5));
-        username.setPromptText("Username");
-        password.setPromptText("Password");
+        username.setPromptText("Gebruikersnaam");
+        password.setPromptText("Wachtwoord");
 
         form.setSpacing(15);
         form.setAlignment(Pos.CENTER);
@@ -97,11 +98,11 @@ public class LoginView extends BorderPane {
             scene.goToLobby();
         }
         else {
-            failedLabel.setText("login failed, check your username and password.");
+            failedLabel.setText("Inloggen mislukt, kijk of de juiste gegevens zijn ingevoerd.");
         }
 
     }
-
+//todo
     //check if exist fucked up
     // via controller en dan melding teruggeven.
     public void registerUser() {
@@ -114,7 +115,7 @@ public class LoginView extends BorderPane {
             scene.goToLobby();
         }
         else {
-            failedLabel.setText("this username already exists, choose another one.");
+            failedLabel.setText("Deze gebruiker bestaat al, kies een andere naam.");
         }
     }
 }

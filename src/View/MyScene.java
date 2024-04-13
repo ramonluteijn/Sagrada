@@ -10,14 +10,13 @@ public class MyScene extends Scene {
         super(new Pane());
         //root = new SelectPatternView();
         root = new Pane();
-        root.getChildren().add(new LoginView(this));
+        root.getChildren().add(new CardView());
         this.setRoot(root);
     }
 
     public void goToLobby() {
         root.getChildren().set(0, new LobbyView());
         root.getChildren().add(new MenuBarView(this));
-
     }
 
     public void openLoginView() {
