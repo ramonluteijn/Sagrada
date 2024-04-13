@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Screen;
 
 public class LoginView extends BorderPane {
     private MyScene scene;
@@ -22,7 +23,10 @@ public class LoginView extends BorderPane {
     public LoginView(MyScene scene) {
         this.scene = scene;
         this.setCenter(getForm());
-        this.setPrefSize(500,500);
+        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+        setPrefSize(screenWidth, screenHeight);
+
     }
 
     private VBox getForm() {
@@ -30,7 +34,7 @@ public class LoginView extends BorderPane {
         username = new TextField();
         password = new TextField();
         Label banner = new Label("SAGRADA");
-        failedLabel = new Label();
+        failedLabel = new Label("Please login to your account.");
 
         failedLabel.setMaxWidth(Double.MAX_VALUE);
         failedLabel.setAlignment(Pos.CENTER);
@@ -53,6 +57,7 @@ public class LoginView extends BorderPane {
         form.setAlignment(Pos.CENTER);
         form.setPadding(new Insets(30,30,30,30));
         form.setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
+        form.setMaxSize(400,400);
 
         form.getChildren().addAll(banner, username, password, getButtons(), failedLabel);
         return form;
@@ -79,10 +84,8 @@ public class LoginView extends BorderPane {
     }
 
 //todo
-    // check pass brokee broke
     // length check
-    // ww check is er niet
-
+    // ^ controller
 
     public void loginUser() {
         //veranderen dmv controller etc
@@ -100,11 +103,18 @@ public class LoginView extends BorderPane {
     }
 
     //check if exist fucked up
+    // via controller en dan melding teruggeven.
     public void registerUser() {
         //veranderen dmv controller etc
         DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
         AccountDB acc = new AccountDB(conn);
-        acc.insertAccount(username.getText(), password.getText());
-        failedLabel.setText("this username already exists, choose another one.");
+
+        if(!acc.checkIfUserExists(username.getText())) {
+            acc.insertAccount(username.getText(), password.getText());
+            scene.goToLobby();
+        }
+        else {
+            failedLabel.setText("this username already exists, choose another one.");
+        }
     }
 }

@@ -55,7 +55,7 @@ public class AccountDB {
     public String getAccount(String username, String password) {
         String account = "";
         if (conn.makeConnection()) {
-            String query = "select * from account where username='"+username+"';";
+            String query = "select * from account where username='"+username+"' AND password='"+password+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);

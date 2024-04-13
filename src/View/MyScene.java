@@ -9,13 +9,15 @@ public class MyScene extends Scene {
     public MyScene() {
         super(new Pane());
         //root = new SelectPatternView();
-        root = new LoginView(this);
+        root = new Pane();
+        root.getChildren().add(new LoginView(this));
         this.setRoot(root);
     }
 
     public void goToLobby() {
-        root.getChildren().add(new MenuBarView(this));
         root.getChildren().set(0, new LobbyView());
+        root.getChildren().add(new MenuBarView(this));
+
     }
 
     public void openLoginView() {
