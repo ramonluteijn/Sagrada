@@ -1,39 +1,69 @@
 package View;
 
-import javafx.geometry.Insets;
-import javafx.scene.layout.HBox;
-import javafx.scene.control.Button;
 
-public class MenuBarView extends HBox {
+
+import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+
+public class MenuBarView extends MenuBar {
 
     public MenuBarView(MyScene scene) {
-        Button homeButton = new Button("Home");
-        Button logOutButton = new Button("Log Out");
-        Button settingsButton = new Button("Settings");
-        Button statsButton = new Button("Stats");
+    	
+    	
+    	
+        Menu home = new Menu("Home");
+        
+        MenuItem lobby = new MenuItem("Lobby");
+        lobby.setOnAction(e -> lobbyButton(scene));
+        MenuItem logOut = new MenuItem("Log Out");
+        logOut.setOnAction(e -> logOutButton(scene));
+        
+        
+        home.getItems().addAll(lobby, logOut);
+        
+        
+        Menu settings = new Menu("Settings");
+        
+        CheckMenuItem colorBlind = new CheckMenuItem("ColorBlindness");
+        colorBlind.setOnAction(e -> switchColorBlindness());
+        
+        settings.getItems().add(colorBlind);
+        
+       
 
-        homeButton.setOnAction(e -> homeButton(scene));
-        logOutButton.setOnAction(e -> logOutButton(scene));
-        settingsButton.setOnAction(e -> settingsButton(scene));
-        statsButton.setOnAction(e -> statsButton(scene));
+        Menu stats = new Menu("Statistics");
+        
+        MenuItem myStats = new MenuItem("My Statistics");
+        myStats.setOnAction(e -> statsButton(scene));
+        MenuItem gameStats = new MenuItem("Find New Game");
+        myStats.setOnAction(e -> gameStatsButton(scene));
+        
+        stats.getItems().addAll(myStats, gameStats);
 
-        homeButton.setPadding(new Insets(10,10,10,10));
-        logOutButton.setPadding(new Insets(10,10,10,10));
-        settingsButton.setPadding(new Insets(10,10,10,10));
-        statsButton.setPadding(new Insets(10,10,10,10));
-        this.getChildren().addAll(homeButton, statsButton, settingsButton, logOutButton);
+        
+        
+        
+        this.getMenus().addAll(home, settings, stats);
     }
 
-    private void homeButton(MyScene scene){
-        //scene.openHomeView();
+    private void switchColorBlindness() {
+		// TODO Auto-generated method stub
+    	System.out.println("hello");
+	}
+
+	private void gameStatsButton(MyScene scene) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void lobbyButton(MyScene scene){
+        //scene.openLobbyView();
     }
 
     private void statsButton(MyScene scene){
         //scene.openStatsView();
-    }
-
-    private void settingsButton(MyScene scene){
-        //scene.openSettingsView();
     }
 
     private void logOutButton(MyScene scene){
