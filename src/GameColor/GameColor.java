@@ -19,7 +19,7 @@ public class GameColor {
 	
 	
 	
-	
+	// test123
 	// die and patterncard colors (change if setColors() is called)
 	private Color redDie;
 	private Color yellowDie;
