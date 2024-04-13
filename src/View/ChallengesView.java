@@ -40,11 +40,11 @@ public class ChallengesView extends HBox {
             accountBox.getChildren().add(nameAndButton);
         }
     }
-*/
+
 
     private void openAccountDetails(Account account) {
     }
-
+*/
     private void setInviteStatus(boolean status, HBox ref) {
         accountBox.getChildren().remove(ref);
         //Reference to Controller to connect to DB to update invite status?
