@@ -1,17 +1,18 @@
 package View;
 
-import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
+import Controller.ObjectiveCardController;
+import Controller.ToolcardController;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class CardView extends HBox {
     private int amountOfCrads = 3;
+    private ToolcardController toolcardController;
+    private ObjectiveCardController objectiveCardController;
 
     public CardView() {
+        this.objectiveCardController = new ObjectiveCardController();
+        this.toolcardController = new ToolcardController();
         VBox toolCardsBox = toolcardsList();
         VBox poCardsBox = pocardsList();
         this.getChildren().addAll(toolCardsBox, poCardsBox);
@@ -22,6 +23,7 @@ public class CardView extends HBox {
         VBox toolCardsList = new VBox();
         for (int i = 0; i < amountOfCrads; i++) {
             toolCardsList.setSpacing(10);
+
             toolCardsList.getChildren().add(new ToolcardView());
         }
         return toolCardsList;
@@ -30,16 +32,10 @@ public class CardView extends HBox {
     private VBox pocardsList() {
         VBox poCardsList = new VBox();
         for (int i = 0; i < amountOfCrads; i++) {
-            Rectangle card = card(Color.rgb(i * 30, i * 40, i * 50)); // Different color for PO cards
-            poCardsList.getChildren().add(card);
+            poCardsList.setSpacing(10);
+            poCardsList.getChildren().add(new PublicObjectivecardView());
         }
-
         return poCardsList;
     }
 
-    private Rectangle card(Color color) {
-        Rectangle rect = new Rectangle(100, 100); // Width and height of the rectangle
-        rect.setFill(color);
-        return rect;
-    }
 }

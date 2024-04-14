@@ -1,5 +1,6 @@
 package View;
 
+import Controller.AccountController;
 import Database.AccountDB;
 import Database.DBConn;
 import javafx.geometry.Insets;
@@ -20,67 +21,70 @@ public class LoginView extends BorderPane {
     private Button login;
     private Button register;
     private Label failedLabel;
+    private AccountController accountController;
 
     public LoginView(MyScene scene) {
+        this.accountController = new AccountController();
         this.scene = scene;
         this.setCenter(getForm());
         double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
         double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
         setPrefSize(screenWidth, screenHeight);
+    }
 
+    private TextField createTextField(String name) {
+        TextField textField = new TextField();
+        textField.setPadding(new Insets(5));
+        textField.setPromptText(name);
+        return textField;
+    }
+
+    private Label createLabel(String name,Double size ,Color color) {
+        Label label = new Label(name);
+        label.setAlignment(Pos.CENTER);
+        label.setTextFill(color);
+        label.setFont(Font.font("Arial", size));
+        label.setMaxWidth(Double.MAX_VALUE);
+        return label;
+    }
+
+    private Button createButton(String name) {
+        Button button = new Button(name);
+        button.setPadding(new Insets(10,30,10,30));
+        button.setFont(Font.font("Arial", 16));
+        if(name.equals("Login")) {
+            button.setOnAction(e -> loginUser());
+        }
+        else {
+            button.setOnAction(e -> registerUser());
+        }
+        return button;
     }
 
     private VBox getForm() {
         VBox form = new VBox();
-        username = new TextField();
-        password = new PasswordField();
-        Label banner = new Label("SAGRADA");
-        failedLabel = new Label(" Log in om door te gaan.");
-
-        failedLabel.setMaxWidth(Double.MAX_VALUE);
-        failedLabel.setAlignment(Pos.CENTER);
-        failedLabel.setTextFill(Color.RED);
-        failedLabel.setFont(Font.font("Arial", 12));
-        failedLabel.setStyle("-fx-font-weight: bold");
-
-        banner.setMaxWidth(Double.MAX_VALUE);
-        banner.setAlignment(Pos.CENTER);
-        banner.setTextFill(Color.BLACK);
-        banner.setFont(Font.font("Arial", 24));
-        banner.setStyle("-fx-font-weight: bold");
-
-        username.setPadding(new Insets(5));
-        password.setPadding(new Insets(5));
-        username.setPromptText("Gebruikersnaam");
-        password.setPromptText("Wachtwoord");
+        username = createTextField("Gebruikersnaam");
+        password = createTextField("Wachtwoord");
+        Label banner = createLabel("SAGRADA", 24.0,Color.BLACK);
+        failedLabel = createLabel(" Log in om door te gaan.",12.0 ,Color.RED);
 
         form.setSpacing(15);
         form.setAlignment(Pos.CENTER);
         form.setPadding(new Insets(30,30,30,30));
         form.setBackground(new Background(new BackgroundFill(Color.BISQUE, null, null)));
         form.setMaxSize(400,400);
-
         form.getChildren().addAll(banner, username, password, getButtons(), failedLabel);
         return form;
     }
 
     private HBox getButtons() {
         HBox buttons = new HBox();
-        login = new Button("Login");
-        register = new Button("Register");
+        login = createButton("Login");
+        register = createButton("Register");
 
         buttons.setAlignment(Pos.CENTER);
         buttons.setSpacing(20);
         buttons.getChildren().addAll(login, register);
-
-
-        login.setPadding(new Insets(10,30,10,30));
-        register.setPadding(new Insets(10,30,10,30));
-        login.setFont(Font.font("Arial", 16));
-        register.setFont(Font.font("Arial", 16));
-        login.setOnAction(e -> loginUser());
-        register.setOnAction(e -> registerUser());
-
         return buttons;
     }
 
@@ -93,7 +97,6 @@ public class LoginView extends BorderPane {
         DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
         AccountDB acc = new AccountDB(conn);
         String check = acc.getAccount(username.getText(), password.getText());
-        System.out.println(check);
         if (check.equals("bestaat")) {
             scene.goToLobby();
         }
