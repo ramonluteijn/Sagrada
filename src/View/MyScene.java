@@ -10,7 +10,7 @@ public class MyScene extends Scene {
         super(new Pane());
         root = new Pane();
 //        root.getChildren().add(new LoginView(this));
-        root.getChildren().add(new GameView());
+        root.getChildren().add(new WindowPatternView());
 
         this.setRoot(root);
     }
