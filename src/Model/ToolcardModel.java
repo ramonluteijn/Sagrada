@@ -1,11 +1,11 @@
 package Model;
 
-public class Toolcard {
+public class ToolcardModel {
     private int id;
     private int seqnr;
     private String name;
     private String description;
-    public Toolcard(int id, int seqnr, String name, String description) {
+    public ToolcardModel(int id, int seqnr, String name, String description) {
         this.id = id;
         this.seqnr = seqnr;
         this.name = name;
