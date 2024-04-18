@@ -52,7 +52,7 @@ public class AccountDB {
         return exist;
     }
 
-    public void getAccount(String username, String password) {
+    public String getAccount(String username, String password) {
         String account = "";
         if (conn.makeConnection()) {
             String query = "select * from account where username='"+username+"';";
@@ -76,7 +76,7 @@ public class AccountDB {
                 account = "bestaat niet";
             }
         }
-        System.out.println(account);
+        return account;
     }
 
 
