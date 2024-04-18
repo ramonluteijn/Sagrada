@@ -7,19 +7,18 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
 import java.util.Arrays;
 import java.util.List;
 
-public abstract  class Cards extends BorderPane {
+public abstract class Cards extends BorderPane {
     private int width = 175;
 
     public Cards() {
-        this.setBackground(new Background(new BackgroundFill(Color.SANDYBROWN,null,null)));
+        this.setBackground(new Background(new BackgroundFill(Color.SANDYBROWN, null, null)));
         this.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2))));
-        this.setPrefSize(width, width+75);
+        this.setPrefSize(width, width + 75);
         this.setPadding(new Insets(10));
         this.setTop(getHeader());
         this.setCenter(getDescription());
@@ -29,15 +28,9 @@ public abstract  class Cards extends BorderPane {
     public VBox getHeader() {
         VBox header = new VBox();
         HBox layout = new HBox();
-        Rectangle color = new Rectangle();
         Label title = createLabel(null, 14.0);
 
-        color.setFill(Color.RED);
-        color.setWidth(25);
-        color.setHeight(25);
-        color.setStroke(Color.BLACK);
-
-        layout.getChildren().addAll(color, title);
+        layout.getChildren().add(title);
         layout.setSpacing(10);
         layout.setAlignment(Pos.CENTER_LEFT);
         layout.setMinHeight(30);
@@ -50,13 +43,13 @@ public abstract  class Cards extends BorderPane {
         Label label = new Label(name);
         label.setFont(Font.font("Arial", size));
         label.setWrapText(true);
-        label.setMaxWidth(width-20);
+        label.setMaxWidth(width - 20);
         return label;
     }
 
     public Button createButton(String name, int width) {
         Button button = new Button(name);
-        button.setPadding(new Insets(5,10,5,10));
+        button.setPadding(new Insets(5, 10, 5, 10));
         button.setFont(Font.font("Arial", 12));
         button.setPrefWidth(width);
         switch (name) {
@@ -85,7 +78,7 @@ public abstract  class Cards extends BorderPane {
         line2.setStartX(60);
         layout.setAlignment(Pos.CENTER);
         layout.setSpacing(5);
-        layout.getChildren().addAll(line1,seqnr, line2);
+        layout.getChildren().addAll(line1, seqnr, line2);
         return layout;
     }
 
@@ -100,7 +93,7 @@ public abstract  class Cards extends BorderPane {
         HBox layout = new HBox();
         Button inspect = createButton("Bekijken", 75);
         Button buy = createButton("Kopen", 75);
-        layout.getChildren().addAll(inspect,buy);
+        layout.getChildren().addAll(inspect, buy);
         layout.setSpacing(5);
         return layout;
     }
@@ -117,10 +110,10 @@ public abstract  class Cards extends BorderPane {
         layout.add(createLabel("Tokens", 14.0), 1, 0);
         for (int i = 0; i < names.size(); i++) {
             Label name = createLabel(names.get(i), 14.0);
-            Label token = createLabel(String.valueOf(tokens.get(i)),14.0);
+            Label token = createLabel(String.valueOf(tokens.get(i)), 14.0);
             token.setAlignment(Pos.CENTER);
-            layout.add(name, 0, i+1);
-            layout.add(token, 1, i+1);
+            layout.add(name, 0, i + 1);
+            layout.add(token, 1, i + 1);
         }
         return layout;
     }
