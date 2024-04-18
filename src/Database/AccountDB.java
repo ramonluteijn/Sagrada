@@ -51,21 +51,15 @@ public class AccountDB {
         }
         return exist;
     }
-
+// aan gepast dat hij ook het wachtwoord checked bij het inloggen
     public String getAccount(String username, String password) {
         String account = "";
         if (conn.makeConnection()) {
-            String query = "select * from account where username='"+username+"';";
+            String query = "select * from account where username='"+username+"' AND password='"+password+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
-                while (rs.next())
-                {
-                    String name = rs.getString("username");
-                    String pw = rs.getString("password");
-                    account = name + pw;
-                }
-                if (!account.equals("")){
+                if (rs.next()){
                     account = "bestaat";
                 } else {
                     account = "bestaat niet";
@@ -78,7 +72,6 @@ public class AccountDB {
         }
         return account;
     }
-
 
     public String getAccountsBySearch(String username) {
         String account = "";

@@ -25,7 +25,8 @@ public class DBConn {
     public boolean makeConnection()
     {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/2023_sagrada?user=root&password=");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/2023_sagrada?user=root&password=root");
+            // Heb achter password root moeten neer zetten anders deed hij het niet bij mij
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
