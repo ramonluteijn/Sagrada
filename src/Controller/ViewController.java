@@ -9,7 +9,7 @@ public class ViewController {
 			AccountController accountController,
 			ChallengeController challengeController,
 			ChatController chatController,
-			DieController diceController,
+			DiceController diceController,
 			GameController gameController,
 			ObjectiveCardController objectiveCardController,
 			PatternCardController patternCardController,
