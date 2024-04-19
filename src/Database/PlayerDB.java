@@ -31,10 +31,10 @@ public class PlayerDB {
         if (conn.makeConnection()) {
             String query = "update player set playstatus = '"+playstatus+"', score = '"+ score+"'where idplayer = '"+playerId+"';";
             try {
-                    Statement stmt = conn.getConn().createStatement();
-                    stmt.executeUpdate(query);
-                    stmt.close();
-                    System.out.println("geupdate");
+                Statement stmt = conn.getConn().createStatement();
+                stmt.executeUpdate(query);
+                stmt.close();
+                System.out.println("geupdate");
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }

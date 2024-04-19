@@ -18,8 +18,8 @@ public class AccountDB {
                 if(!checkIfUserExists(username)) {
                     Statement stmt = conn.getConn().createStatement();
                     stmt.executeUpdate(query);
-                    stmt.close();
                     System.out.println("nieuw");
+                    stmt.close();
                 }
                 else {
                     System.out.println("bestaat");
@@ -32,7 +32,7 @@ public class AccountDB {
 
 
     public boolean checkIfUserExists(String username) {
-        boolean exist = true;
+        boolean exist = false;
         if (conn.makeConnection()) {
             String query = "select * from account where username='"+username+"';";
             try {
@@ -40,9 +40,6 @@ public class AccountDB {
                 ResultSet rs = stmt.executeQuery(query);
                 if(rs.next()) {
                     exist = true;
-                }
-                else {
-                    exist = false;
                 }
                 stmt.close();
             } catch (SQLException e) {

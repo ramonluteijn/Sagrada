@@ -94,14 +94,12 @@ public class LoginView extends BorderPane {
 
     public void loginUser() {
         //veranderen dmv controller etc
-        DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
-        AccountDB acc = new AccountDB(conn);
-        String check = acc.getAccount(username.getText(), password.getText());
-        if (check.equals("bestaat")) {
-            scene.goToLobby();
-        } else {
-            failedLabel.setText("Inloggen mislukt, kijk of de juiste gegevens zijn ingevoerd.");
-        }
+//        String check = acc.getAccount(username.getText(), password.getText());
+//        if (check.equals("bestaat")) {
+//            scene.goToLobby();
+//        } else {
+//            failedLabel.setText("Inloggen mislukt, kijk of de juiste gegevens zijn ingevoerd.");
+//        }
 
     }
 
@@ -110,14 +108,11 @@ public class LoginView extends BorderPane {
     // via controller en dan melding teruggeven.
     public void registerUser() {
         //veranderen dmv controller etc
-        DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
-        AccountDB acc = new AccountDB(conn);
-
-        if (!acc.checkIfUserExists(username.getText())) {
-            acc.insertAccount(username.getText(), password.getText());
-            scene.goToLobby();
-        } else {
-            failedLabel.setText("Deze gebruiker bestaat al, kies een andere naam.");
-        }
+//        if (!acc.checkIfUserExists(username.getText())) {
+//            acc.insertAccount(username.getText(), password.getText());
+//            scene.goToLobby();
+//        } else {
+//            failedLabel.setText("Deze gebruiker bestaat al, kies een andere naam.");
+//        }
     }
 }
