@@ -31,3 +31,4 @@ Sagrada.iml
 *.project
 *.classpath
 .settings
+/bin/

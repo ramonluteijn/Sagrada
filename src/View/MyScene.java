@@ -2,6 +2,7 @@ package View;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class MyScene extends Scene {
 
@@ -9,8 +10,11 @@ public class MyScene extends Scene {
     public MyScene() {
         super(new Pane());
         root = new Pane();
-//        root.getChildren().add(new LoginView(this));
-        root.getChildren().add(new WindowPatternView());
+//       root.getChildren().add(new LoginView(this));
+        
+       root.getChildren().add(new WindowPatternView());
+//     root.getChildren().add(new SelectPatternView());
+
 
         this.setRoot(root);
     }
