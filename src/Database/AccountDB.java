@@ -134,7 +134,6 @@ public class AccountDB {
                 {
                     String name = rs.getString("username");
                     String pw = rs.getString("password");
-//                    System.out.println(loss = name + pw);
                 }
                 stmt.close();
             } catch (SQLException e) {

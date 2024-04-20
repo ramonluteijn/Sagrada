@@ -22,10 +22,12 @@ public class ChatDB {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    String playerid = rs.getString("idplayer");
+                    int playerid = rs.getInt("idplayer");
                     Timestamp time = rs.getTimestamp("time");
                     String message = rs.getString("message");
-                    System.out.println(chat = playerid + time + message);
+                    System.out.println(chat =""+ playerid + time + message);
+                    System.out.println(playerid + " - " + time + " - " + message);
+
                 }
                 stmt.close();
             } catch (SQLException e) {

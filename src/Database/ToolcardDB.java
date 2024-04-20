@@ -21,7 +21,7 @@ public class ToolcardDB {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    String seqnr = rs.getString("seqnr");
+                    int seqnr = rs.getInt("seqnr");
                     String name = rs.getString("name");
                     String description = rs.getString("description");
                     System.out.println(seqnr + " - " + name + " - " + description);

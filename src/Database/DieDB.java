@@ -18,7 +18,7 @@ public class DieDB {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                    String number = rs.getString("number");
+                    int number = rs.getInt("number");
                     String color = rs.getString("color");
                     System.out.println(number + " - " + color);
                 }
@@ -37,7 +37,7 @@ public class DieDB {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()) {
-                    String number = rs.getString("number");
+                    int number = rs.getInt("number");
                     String color = rs.getString("color");
                     System.out.println(number + " - " + color);
                 }

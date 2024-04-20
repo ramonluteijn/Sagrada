@@ -52,10 +52,10 @@ public class GameDB {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    String turn_idplayer = rs.getString("turn_idplayer");
-                    String roundID = rs.getString("roundID");
-                    String creationdate = rs.getString("creationdate");
-                    System.out.println(game = gameId + turn_idplayer + roundID + creationdate);
+                    int turn_idplayer = rs.getInt("turn_idplayer");
+                    int roundID = rs.getInt("roundID");
+                    Timestamp creationdate = rs.getTimestamp("creationdate");
+                    System.out.println(game = gameId + " - " + turn_idplayer + " - " + roundID + " - " + creationdate);
                 }
                 stmt.close();
             } catch (SQLException e) {
@@ -74,10 +74,10 @@ public class GameDB {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    String turn_idplayer = rs.getString("turn_idplayer");
-                    String roundID = rs.getString("roundID");
-                    String creationdate = rs.getString("creationdate");
-                    System.out.println(turn_idplayer + roundID + creationdate);
+                    int turn_idplayer = rs.getInt("turn_idplayer");
+                    int roundID = rs.getInt("roundID");
+                    Timestamp creationdate = rs.getTimestamp("creationdate");
+                    System.out.println(turn_idplayer + " - " + roundID + " - " + creationdate);
                 }
                 stmt.close();
             } catch (SQLException e) {

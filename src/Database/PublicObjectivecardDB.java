@@ -21,10 +21,10 @@ public class PublicObjectivecardDB {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    String id = rs.getString("idpublic_objectivecard");
+                    int id = rs.getInt("idpublic_objectivecard");
                     String name = rs.getString("name");
                     String description = rs.getString("description");
-                    String points = rs.getString("points");
+                    int points = rs.getInt("points");
                     System.out.println(id + " - " + name + " - " + description + " - " + points);
                 }
                 stmt.close();
@@ -34,8 +34,8 @@ public class PublicObjectivecardDB {
         }
     }
 
-    public Toolcard getGamePublicObjectivecard(int gameId) {
-        Toolcard toolcard = null;
+    public String getGamePublicObjectivecard(int gameId) {
+
         if (conn.makeConnection()) {
             String query = "select * from gameobjectivecard_public inner join public_objectivecard on gameobjectivecard_public.idpublic_objectivecard = public_objectivecard.idpublic_objectivecard where idgame = '"+gameId+"';";
             try {
@@ -47,14 +47,15 @@ public class PublicObjectivecardDB {
                     int points = rs.getInt("points");
                     String name = rs.getString("name");
                     String description = rs.getString("description");
-                    toolcard = new Toolcard(id,points,name,description);
+                    System.out.println(id + " - " + points + " - " + name + " - " + description);
+
                 }
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
         }
-        return toolcard;
+        return null;
     }
 
     public void insertGamePublicObjectivecard(int gameId, int publicObjectivecardId) {
