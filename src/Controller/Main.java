@@ -1,3 +1,4 @@
+package Controller;
 import Database.DBConn;
 import View.MyScene;
 import javafx.application.Application;
@@ -11,10 +12,13 @@ public class Main extends Application{
 
 //    @Override
     public void start(Stage stage) throws Exception {
+    	
+    	MainController mainController = new MainController();
+    	
         stage.setTitle("Sagrada");
-        stage.setMaximized(true);
         stage.setScene(new MyScene());
         stage.show();
+        
     }
 }
 

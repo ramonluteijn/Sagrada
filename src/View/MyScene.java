@@ -8,7 +8,7 @@ public class MyScene extends Scene {
     private Pane root;
     public MyScene() {
         super(new Pane());
-        
+       
         FavorTokensView tokens = new FavorTokensView();
         
         root = new Pane();
@@ -18,5 +18,15 @@ public class MyScene extends Scene {
         tokens.drawFavortokens();
         
         this.setRoot(root);
+    }
+
+    public void goToLobby() {
+        root.getChildren().add(new MenuBarView(this));
+        root.getChildren().set(0, new LobbyView());
+    }
+
+    public void openLoginView() {
+        root.getChildren().remove(1);
+        root.getChildren().set(0,new LoginView(this));
     }
 }
