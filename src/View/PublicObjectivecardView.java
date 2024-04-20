@@ -15,8 +15,9 @@ public class PublicObjectivecardView extends Cards {
     public VBox getHeader() {
         VBox layout = super.getHeader();
         Label title = createLabel("Row Shade Variety", 14.0);
-        ((HBox) layout.getChildren().get(0)).getChildren().set(0, title);//node is being cast to HBox
-        layout.setAlignment(Pos.CENTER);
+        HBox titleContainer = (HBox) layout.getChildren().get(0);//node is being cast to HBox, check if first node is HBox
+        titleContainer.getChildren().set(0, title);
+        titleContainer.setAlignment(Pos.CENTER);
         return layout;
     }
 

@@ -1,5 +1,6 @@
 package View;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -23,8 +24,9 @@ public class ToolcardView extends Cards {
         color.setHeight(25);
         color.setStroke(Color.BLACK);
         Label title = createLabel("Cork-backed Straightedge", 14.0);
-        ((HBox) layout.getChildren().get(0)).getChildren().set(0, color);//node is being cast to HBox, title place is being replaced by color
-        ((HBox) layout.getChildren().get(0)).getChildren().add(title);//node is being cast to HBox, title is being added to the end of the list
+        HBox titleContainer = (HBox) layout.getChildren().get(0);//node is being cast to HBox, check if first node is HBox
+        titleContainer.getChildren().set(0, color);//title place is being replaced by color
+        titleContainer.getChildren().add(title);
         return layout;
     }
 
