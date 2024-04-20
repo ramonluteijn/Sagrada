@@ -1,8 +1,6 @@
 package View;
 
 import Controller.AccountController;
-import Database.AccountDB;
-import Database.DBConn;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -19,6 +17,7 @@ public class LoginView extends BorderPane {
     private Label failedLabel;
     private AccountController accountController;
 
+    // constructor for the login view
     public LoginView(MyScene scene) {
         this.accountController = new AccountController();
         this.scene = scene;
@@ -28,6 +27,7 @@ public class LoginView extends BorderPane {
         setPrefSize(screenWidth, screenHeight);
     }
 
+    // create a textfield for the username and password
     private TextInputControl createField(String name) {
         TextInputControl field;
         if (name.equals("Wachtwoord")) {
@@ -40,6 +40,7 @@ public class LoginView extends BorderPane {
         return field;
     }
 
+    // create a label with a specific name, size and color
     private Label createLabel(String name, Double size, Color color) {
         Label label = new Label(name);
         label.setAlignment(Pos.CENTER);
@@ -49,6 +50,7 @@ public class LoginView extends BorderPane {
         return label;
     }
 
+    // create a button with a specific name
     private Button createButton(String name) {
         Button button = new Button(name);
         button.setPadding(new Insets(10, 30, 10, 30));
@@ -61,6 +63,7 @@ public class LoginView extends BorderPane {
         return button;
     }
 
+    // create the form for the login view
     private VBox getForm() {
         VBox form = new VBox();
         username = (TextField) createField("Gebruikersnaam");
@@ -77,6 +80,7 @@ public class LoginView extends BorderPane {
         return form;
     }
 
+    // create the buttons for the login view
     private HBox getButtons() {
         HBox buttons = new HBox();
         Button login = createButton("Login");
@@ -92,6 +96,7 @@ public class LoginView extends BorderPane {
     // length check
     // ^ controller
 
+    //login user
     public void loginUser() {
         //veranderen dmv controller etc
 //        String check = acc.getAccount(username.getText(), password.getText());
@@ -104,8 +109,9 @@ public class LoginView extends BorderPane {
     }
 
     //todo
-    //check if exist fucked up
     // via controller en dan melding teruggeven.
+
+    // register user
     public void registerUser() {
         //veranderen dmv controller etc
 //        if (!acc.checkIfUserExists(username.getText())) {

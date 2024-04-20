@@ -98,12 +98,6 @@ public class AccountDB {
         return account;
     }
 
-    // welke username?
-    // welk spel?
-    // welke spelers nemen deel?
-    // wat is de highscore van dat spel ?
-    // is de highscore de username?
-
     public int getWinAmount(String username) {
         int win = 0;
         if (conn.makeConnection()) {

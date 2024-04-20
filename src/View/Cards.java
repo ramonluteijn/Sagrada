@@ -89,6 +89,7 @@ public abstract class Cards extends BorderPane {
         return layout;
     }
 
+    // check if it is toolcard or public objective card //todo
     public HBox getFooter() {
         HBox layout = new HBox();
         Button inspect = createButton("Bekijken", 75);

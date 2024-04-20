@@ -12,7 +12,6 @@ public class ChatDB {
         this.conn = conn;
     }
 
-    //voorbeeld!!!!
     public String getChat() {
         String chat = "";
 
