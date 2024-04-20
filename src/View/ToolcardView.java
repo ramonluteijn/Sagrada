@@ -10,8 +10,10 @@ public class ToolcardView extends Cards {
 
     public ToolcardView() {
         super();
+        this.setBottom(getFooter());
     }
 
+    //create header + color
     @Override
     public VBox getHeader() {
         VBox layout = super.getHeader();
@@ -26,6 +28,7 @@ public class ToolcardView extends Cards {
         return layout;
     }
 
+    //create card number
     @Override
     public HBox getNumber() {
         HBox layout = super.getNumber();
@@ -34,6 +37,7 @@ public class ToolcardView extends Cards {
         return layout;
     }
 
+    //create card description
     @Override
     public HBox getDescription() {
         HBox layout = super.getDescription();

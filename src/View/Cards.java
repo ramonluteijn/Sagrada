@@ -15,6 +15,7 @@ import java.util.List;
 public abstract class Cards extends BorderPane {
     private int width = 175;
 
+    //base constructor
     public Cards() {
         this.setBackground(new Background(new BackgroundFill(Color.SANDYBROWN, null, null)));
         this.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2))));
@@ -22,9 +23,9 @@ public abstract class Cards extends BorderPane {
         this.setPadding(new Insets(10));
         this.setTop(getHeader());
         this.setCenter(getDescription());
-        this.setBottom(getFooter());
     }
 
+    //base header
     public VBox getHeader() {
         VBox header = new VBox();
         HBox layout = new HBox();
@@ -39,6 +40,7 @@ public abstract class Cards extends BorderPane {
         return header;
     }
 
+    //create card name
     public Label createLabel(String name, Double size) {
         Label label = new Label(name);
         label.setFont(Font.font("Arial", size));
@@ -47,6 +49,7 @@ public abstract class Cards extends BorderPane {
         return label;
     }
 
+    //create button
     public Button createButton(String name, int width) {
         Button button = new Button(name);
         button.setPadding(new Insets(5, 10, 5, 10));
@@ -66,6 +69,7 @@ public abstract class Cards extends BorderPane {
         return button;
     }
 
+    //create card number
     public HBox getNumber() {
         HBox layout = new HBox();
         Label seqnr = createLabel(null, 8.0);
@@ -82,6 +86,7 @@ public abstract class Cards extends BorderPane {
         return layout;
     }
 
+    //create card description
     public HBox getDescription() {
         HBox layout = new HBox();
         Label description = createLabel(null, 14.0);
@@ -89,7 +94,7 @@ public abstract class Cards extends BorderPane {
         return layout;
     }
 
-    // check if it is toolcard or public objective card //todo
+    //create card footer
     public HBox getFooter() {
         HBox layout = new HBox();
         Button inspect = createButton("Bekijken", 75);
@@ -99,7 +104,8 @@ public abstract class Cards extends BorderPane {
         return layout;
     }
 
-    public GridPane getInfo() {
+    //create card info: name and tokens
+    private GridPane getInfo() {
         GridPane layout = new GridPane();
         layout.setHgap(10);
         layout.setVgap(5);
@@ -119,7 +125,8 @@ public abstract class Cards extends BorderPane {
         return layout;
     }
 
-    public HBox getFrontSide() {
+    //flip back to frontside button
+    private HBox getFrontSide() {
         HBox layout = new HBox();
         Button turnBack = createButton("Terugdraaien", width);
         layout.getChildren().add(turnBack);
@@ -127,16 +134,20 @@ public abstract class Cards extends BorderPane {
         return layout;
     }
 
-    public void turnBack() {
+    //flip back to frontside
+    private void turnBack() {
         this.setCenter(getDescription());
         this.setBottom(getFooter());
     }
 
-    public void inspectCard() {
+    //flip card to backside for inspection
+    private void inspectCard() {
         this.setCenter(getInfo());
         this.setBottom(getFrontSide());
     }
 
-    public void buyCard() {
+    //buy card
+    private void buyCard() {
+        System.out.println("Card bought");
     }
 }

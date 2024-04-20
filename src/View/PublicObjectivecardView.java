@@ -10,6 +10,7 @@ public class PublicObjectivecardView extends Cards {
         super();
     }
 
+    //create header
     @Override
     public VBox getHeader() {
         VBox layout = super.getHeader();
@@ -19,6 +20,7 @@ public class PublicObjectivecardView extends Cards {
         return layout;
     }
 
+    //create card number
     @Override
     public HBox getNumber() {
         HBox layout = super.getNumber();
@@ -27,6 +29,7 @@ public class PublicObjectivecardView extends Cards {
         return layout;
     }
 
+    //create card description
     @Override
     public HBox getDescription() {
         HBox layout = super.getDescription();
