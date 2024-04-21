@@ -1,33 +1,19 @@
 package Controller;
 
 public class MainController {
-	private ViewController viewController;
-
-	public MainController(){
-		AccountController accountController = new AccountController();
-		ChallengeController challengeController = new ChallengeController();
-		ChatController chatController = new ChatController();
-		DiceController diceController = new DiceController();
-		GameController gameController = new GameController();
-		ObjectiveCardController objectiveCardController = new ObjectiveCardController();
-		PatternCardController patternCardController = new PatternCardController();
-		PlayerController playerController = new PlayerController();
-		ToolcardController toolcardController = new ToolcardController();
-		
-		viewController = new ViewController(
-				accountController, 
-				challengeController, 
-				chatController, 
-				diceController, 
-				gameController, 
-				objectiveCardController, 
-				patternCardController, 
-				playerController, 
-				toolcardController);
-	}
 	
-	ViewController getViewController(){
-		return viewController;
-	}
-
+	public final AccountController accountController = new AccountController();
+	public final ChallengeController challengeController = new ChallengeController();
+	public final ChatController chatController = new ChatController();
+	public final DiceController diceController = new DiceController();
+	public final GameController gameController = new GameController();
+	public final ObjectiveCardController objectiveCardController = new ObjectiveCardController();
+	public final PatternCardController patternCardController = new PatternCardController();
+	public final PlayerController playerController = new PlayerController();
+	public final ToolcardController toolcardController = new ToolcardController();
+	
+	
+	
+	
+	
 }
