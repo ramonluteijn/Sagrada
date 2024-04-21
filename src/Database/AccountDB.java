@@ -51,27 +51,28 @@ public class AccountDB {
         }
         return exist;
     }
-// aan gepast dat hij ook het wachtwoord checked bij het inloggen
-    public String getAccount(String username, String password) {
-        String account = "";
+
+    public Account getAccount(String username, String password) {
+        Account accountModel = null;
         if (conn.makeConnection()) {
-            String query = "select * from account where username='"+username+"' AND password='"+password+"';";
+            String query = "select * from account where username='"+username+"' and password='"+password+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
-                if (rs.next()){
-                    account = "bestaat";
-                } else {
-                    account = "bestaat niet";
+                if (rs.next()) {
+                    accountModel = new Account();
+                    accountModel.setUsername(rs.getString("username"));
+                    accountModel.setPassword(rs.getString("password"));
+                    // Set other fields of the AccountModel based on the query result
                 }
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
-                account = "bestaat niet";
             }
         }
-        return account;
+        return accountModel;
     }
+
 
     public String getAccountsBySearch(String username) {
         String account = "";

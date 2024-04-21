@@ -12,7 +12,6 @@ public class Account {
     private int mostPlacedNumber;
     private int opponents;
 
-
     // Setters
     public void setUsername(String username) {
         this.username = username;
@@ -53,15 +52,5 @@ public class Account {
 
     public int getOpponents() {
         return opponents;
-    }
-
-    public Account(String username, int winAmount, int lossAmount, Color mostPlacedColor, int highscore, int mostPlacedNumber, int opponents) {
-        this.username = username;
-        this.winAmount = winAmount;
-        this.lossAmount = lossAmount;
-        this.mostPlacedColor = mostPlacedColor;
-        this.highscore = highscore;
-        this.mostPlacedNumber = mostPlacedNumber;
-        this.opponents = opponents;
     }
 }

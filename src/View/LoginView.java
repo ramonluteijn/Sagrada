@@ -1,7 +1,6 @@
 package View;
 
-import Database.AccountDB;
-import Database.DBConn;
+import Controller.AccountController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -18,9 +17,11 @@ public class LoginView extends BorderPane {
     private Button login;
     private Button register;
     private Label failedLabel;
+    private AccountController account;
 
-    public LoginView(MyScene scene) {
+    public LoginView(MyScene scene, AccountController accountController) {
         this.scene = scene;
+        this.account = accountController; // <-- Toegevoegd
         this.setCenter(getForm());
         this.setPrefSize(500,500);
     }
@@ -78,33 +79,21 @@ public class LoginView extends BorderPane {
         return buttons;
     }
 
-//todo
-    // check pass brokee broke
-    // length check
-    // ww check is er niet
-
-
     public void loginUser() {
-        //veranderen dmv controller etc
-        DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
-        AccountDB acc = new AccountDB(conn);
-        String check = acc.getAccount(username.getText(), password.getText());
-        System.out.println(check);
-        if (check.equals("bestaat")) {
+        if (account.authenticateUser(username.getText(), password.getText())) {
             scene.goToLobby();
         }
         else {
             failedLabel.setText("login failed, check your username and password.");
         }
-
     }
 
-    //check if exist fucked up
     public void registerUser() {
-        //veranderen dmv controller etc
-        DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
-        AccountDB acc = new AccountDB(conn);
-        acc.insertAccount(username.getText(), password.getText());
-        failedLabel.setText("this username already exists, choose another one.");
+                if(account.registerUser(username.getText(), password.getText())) {
+            scene.goToLobby();
+        }
+        else {
+            failedLabel.setText("this username already exists, choose another one.");
+        }
     }
 }
