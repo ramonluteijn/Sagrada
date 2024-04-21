@@ -1,16 +1,22 @@
 package View;
 
-import java.util.List;
-import javafx.scene.control.Button;
+import Controller.ChallengeController;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 public class ChallengesView extends HBox {
     private VBox accountBox;
+    
+    
 
-    public ChallengesView() {
-        accountBox = new VBox();
-        this.getChildren().add(accountBox);
+    public ChallengesView(ChallengeController challengecontroller) {
+    	accountBox = new VBox();
+        
+    	this.setBackground(new Background(new BackgroundFill(Color.RED,null,null)));
+    	this.getChildren().add(accountBox);
     }
 /*
     public void setInvites(List<Account> accounts) {

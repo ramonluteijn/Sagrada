@@ -1,14 +1,17 @@
 package View;
 
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Screen;
-import javafx.geometry.Pos;
 
 
 public class LobbyView extends HBox {
-    public LobbyView(){
-
+	MyScene scene;
+    public LobbyView(MyScene scene){
+    	this.scene = scene;
+    	
         double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
         double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
 
@@ -39,6 +42,6 @@ public class LobbyView extends HBox {
     }
 
     private void challengesButton(){
-        //scene.challengesView();
+        scene.goToChallengesView();
     }
 }

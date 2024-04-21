@@ -2,6 +2,7 @@ package View;
 
 import java.util.Random;
 
+import Controller.PatternCardController;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -15,17 +16,25 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class PatternView extends BorderPane{
-	SelectPatternView selectPatternView;
-	double SIZE;
+	
+	private PatternCardController controller;
+	
+	private SelectPatternView selectPatternView;
+	private final static int rows = 4;
+	private final static int cols = 5;
+	
+	
 	public PatternView(SelectPatternView selectPatternView) {
+		this.controller = new PatternCardController(); // make sure all patterncardControllers are unique. so that 1 player doesn't get the same card twice
+		
 		this.selectPatternView = selectPatternView;
 		
-		this.setBackground(new Background(new BackgroundFill(Color.ALICEBLUE,null ,null)));
+		this.setBackground(new Background(new BackgroundFill(Color.ALICEBLUE,null ,null)));  // test color i think
 
 		
 		
 
-		this.setBorder(new Border(new BorderStroke(Color.BISQUE, 
+		this.setBorder(new Border(new BorderStroke(Color.BISQUE, // background color
 	            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THICK)));
 		
 		this.setOnMouseReleased(e -> selected());
@@ -52,11 +61,18 @@ public class PatternView extends BorderPane{
 		pattern.setBackground(new Background(new BackgroundFill(Color.LIGHTCORAL, null, null)));
 		Random rand = new Random();
 		
-		for (int y = 0; y < 4; y++) {
-			for (int x = 0; x < 5; x++) {
-				Color COLOR = Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
-				int VALUE = rand.nextInt(7);
-				PatternCardFieldView field = new PatternCardFieldView(COLOR, VALUE);
+		for (int y = 0; y < rows; y++) {
+			for (int x = 0; x < cols; x++) {
+				@SuppressWarnings("unused")
+				Color RAND_COLOR = Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
+				@SuppressWarnings("unused")
+				int RAND_NUMBER = rand.nextInt(7); // voor testen kan later weg
+				
+				
+				Color color = controller.getFieldColor(x, y);
+				int number = controller.getFieldNumber(x, y);
+				
+				PatternCardFieldView field = new PatternCardFieldView(color, number);
 				
 				pattern.add(field, x, y);
 				

@@ -8,17 +8,19 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 public class MenuBarView extends MenuBar {
-
+	
+	MyScene scene;
+	
     public MenuBarView(MyScene scene) {
     	
-    	
+    	this.scene = scene;
     	
         Menu home = new Menu("Home");
         
         MenuItem lobby = new MenuItem("Lobby");
-        lobby.setOnAction(e -> lobbyButton(scene));
+        lobby.setOnAction(e -> lobbyButton());
         MenuItem logOut = new MenuItem("Log Out");
-        logOut.setOnAction(e -> logOutButton(scene));
+        logOut.setOnAction(e -> logOutButton());
         
         
         home.getItems().addAll(lobby, logOut);
@@ -36,9 +38,9 @@ public class MenuBarView extends MenuBar {
         Menu stats = new Menu("Statistics");
         
         MenuItem myStats = new MenuItem("My Statistics");
-        myStats.setOnAction(e -> statsButton(scene));
+        myStats.setOnAction(e -> statsButton());
         MenuItem gameStats = new MenuItem("Find New Game");
-        myStats.setOnAction(e -> gameStatsButton(scene));
+        myStats.setOnAction(e -> gameStatsButton());
         
         stats.getItems().addAll(myStats, gameStats);
 
@@ -49,25 +51,25 @@ public class MenuBarView extends MenuBar {
     }
 
     private void switchColorBlindness() {
-		// TODO Auto-generated method stub
-    	System.out.println("hello");
+		// TODO deze functie
+    	System.out.println("switching colorblindness.........");
 	}
 
-	private void gameStatsButton(MyScene scene) {
-		// TODO Auto-generated method stub
+	private void gameStatsButton() {
+		scene.goToGameStats();
 		
 	}
 
-	private void lobbyButton(MyScene scene){
-        //scene.openLobbyView();
+	private void lobbyButton(){
+        scene.goToLobby();
     }
 
-    private void statsButton(MyScene scene){
-        //scene.openStatsView();
+    private void statsButton(){
+        scene.goToAccountStats();
     }
 
-    private void logOutButton(MyScene scene){
-        scene.openLoginView();
+    private void logOutButton(){
+        scene.goToLogin();
         //accountController.logOut();
     }
 }
