@@ -16,8 +16,8 @@ public class MyScene extends Scene {
     }
 
     public void goToLobby() {
-        root.getChildren().add(new MenuBarView(this));
         root.getChildren().set(0, new LobbyView());
+        root.getChildren().add(new MenuBarView(this));
     }
 
     public void openLoginView() {
