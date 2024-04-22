@@ -47,19 +47,6 @@ public class GameDieDB {
                     int roundtrack = rs.getInt("roundtrack");
                     int roundID = rs.getInt("roundID");
                     System.out.println(idgame + " - " + number + " - " + color + " - " + eyes + " - " + roundtrack + " - " + roundID);
-
-                stmt.close();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-
-    private void executeQuery(String query) {
-        if (conn.makeConnection()) {
-            try {
-                Statement stmt = conn.getConn().createStatement();
-                stmt.executeUpdate(query);
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());

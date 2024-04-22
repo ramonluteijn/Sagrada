@@ -129,7 +129,7 @@ public class AccountDB {
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
-                while (rs.next())
+                if (rs.next())
                 {
                     loss = rs.getInt("loss");
                 }
