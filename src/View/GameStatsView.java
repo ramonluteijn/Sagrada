@@ -2,7 +2,6 @@ package View;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -16,21 +15,25 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 
-public class GameStatsView extends Scene{
+public class GameStatsView extends BorderPane{
 
+	BorderPane root;
+	
 	public GameStatsView() {
-		super(new Pane());
-		
-		BorderPane root = new BorderPane();
-		root.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
-		
-		this.setRoot(root);
-		this.setupRoot(root);
-	}
+        super();
+        this.setBackground(new Background(new BackgroundFill(Color.GRAY,null,null)));
+        
+        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+        setPrefSize(screenWidth, screenHeight);
+        
+        this.setupRoot(this);
+        
+    }
 	
 	private void setupRoot(BorderPane root) {
 		
