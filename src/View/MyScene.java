@@ -9,7 +9,7 @@ public class MyScene extends Scene {
     public MyScene() {
         super(new Pane());
         root = new Pane();
-        root.getChildren().add(new LoginView(this));
+        root.getChildren().add(new CardView());
         this.setRoot(root);
     }
 

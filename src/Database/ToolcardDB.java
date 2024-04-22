@@ -13,26 +13,6 @@ public class ToolcardDB {
         this.conn = conn;
     }
 
-    public void getToolcardList() {
-        if (conn.makeConnection()) {
-            String query = "select * from toolcard";
-            try {
-                Statement stmt = conn.getConn().createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                while (rs.next())
-                {
-                    int seqnr = rs.getInt("seqnr");
-                    String name = rs.getString("name");
-                    String description = rs.getString("description");
-                    System.out.println(seqnr + " - " + name + " - " + description);
-                }
-                stmt.close();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-
     public Toolcard getGameToolcard(int gameId) {
         Toolcard toolcard = null;
         if (conn.makeConnection()) {

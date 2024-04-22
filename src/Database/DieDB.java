@@ -5,28 +5,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DieDB {
-    private DBConn conn;
+    private final DBConn conn;
 
     public DieDB(DBConn conn) {
         this.conn = conn;
-    }
-
-    public void getDieList() {
-        if (conn.makeConnection()) {
-            String query = "select * from die";
-            try {
-                Statement stmt = conn.getConn().createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                while (rs.next()) {
-                    int number = rs.getInt("number");
-                    String color = rs.getString("color");
-                    System.out.println(number + " - " + color);
-                }
-                stmt.close();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-        }
     }
 
     //color is string or color? //todo

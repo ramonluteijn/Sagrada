@@ -5,7 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class GameDieDB {
-    private DBConn conn;
+    private final DBConn conn;
+
     public GameDieDB(DBConn conn){
         this.conn = conn;
     }
@@ -39,8 +40,6 @@ public class GameDieDB {
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
-                while (rs.next())
-                {
                     int idgame = rs.getInt("idgane");
                     int number = rs.getInt("dienumber");
                     String color = rs.getString("diecolor");
@@ -48,7 +47,19 @@ public class GameDieDB {
                     int roundtrack = rs.getInt("roundtrack");
                     int roundID = rs.getInt("roundID");
                     System.out.println(idgame + " - " + number + " - " + color + " - " + eyes + " - " + roundtrack + " - " + roundID);
-                }
+
+                stmt.close();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void executeQuery(String query) {
+        if (conn.makeConnection()) {
+            try {
+                Statement stmt = conn.getConn().createStatement();
+                stmt.executeUpdate(query);
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());

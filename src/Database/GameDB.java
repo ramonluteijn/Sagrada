@@ -5,10 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class GameDB {
-    private DBConn conn;
+    private final DBConn conn;
 
     public GameDB(DBConn conn){
         this.conn = conn;
@@ -29,10 +28,10 @@ public class GameDB {
         }
     }
 
-    public void updateGame(int playerId, int roundid) {
+    public void updateGame(int playerId, int roundId) {
         if (conn.makeConnection()) {
             String query =
-                    "update game set turn_idplayer = '"+playerId+"', roundID = '"+roundid+"';";
+                    "update game set turn_idplayer = '"+playerId+"', roundID = '"+roundId+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 stmt.executeUpdate(query);
@@ -66,7 +65,7 @@ public class GameDB {
     }
 
     // set standard sorting to do descending within view (newest games first), change with button.
-    public void getOrderGameslist(String username, String sorting) {
+    public void getOrderedGameslist(String username, String sorting) {
         if (conn.makeConnection()) {
             String query = "select * from game inner join Payer on game.idgame = player.idgame where player.username = '"+username+" order by creationdate "+sorting+"'";
             try {

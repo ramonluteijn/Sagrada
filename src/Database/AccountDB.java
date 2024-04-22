@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AccountDB {
-    private DBConn conn;
+    private final DBConn conn;
 
     public AccountDB(DBConn conn){
         this.conn = conn;
@@ -62,7 +62,7 @@ public class AccountDB {
                     String pw = rs.getString("password");
                     account = name + pw;
                 }
-                if (!account.equals("")){
+                if (!account.isEmpty()){
                     account = "bestaat";
                 } else {
                     account = "bestaat niet";
@@ -102,15 +102,13 @@ public class AccountDB {
         int win = 0;
         if (conn.makeConnection()) {
             String query =
-                    "select count(p1.idgame) as wins from player as p1 " +
-                    "inner join game on p1.idgame = game.idgame " +
-                    "inner join player as p2 on game.idgame = p2.idplayer " +
-                    "where p1.username name='"+username+"'order by p2.score desc";
+                    "SELECT COUNT(*) AS wins " +
+                            "FROM player AS p1 " +
+                            "WHERE p1.username = '"+username+"' AND p1.score >= (SELECT p2.score FROM player AS p2 WHERE p1.idgame = p2.idgame)";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
-                while (rs.next())
-                {
+                if (rs.next()) {
                     win = rs.getInt("wins");
                 }
                 stmt.close();
@@ -125,15 +123,15 @@ public class AccountDB {
         int loss = 0;
         if (conn.makeConnection()) {
             String query =
-                    "select count(player.idgame) from player " +
-                    "where username='"+username+"' order by player.score desc;";
+                    "SELECT COUNT(*) AS loss " +
+                            "FROM player AS p1 " +
+                            "WHERE p1.username = '"+username+"' AND p1.score <= (SELECT p2.score FROM player AS p2 WHERE p1.idgame = p2.idgame)";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    String name = rs.getString("username");
-                    String pw = rs.getString("password");
+                    loss = rs.getInt("loss");
                 }
                 stmt.close();
             } catch (SQLException e) {
@@ -148,7 +146,7 @@ public class AccountDB {
         if (conn.makeConnection()) {
             String query =
                     "select max(player.score) as highscore " +
-                    "from player " +
+                    "from player" +
                     "where username='"+username+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();

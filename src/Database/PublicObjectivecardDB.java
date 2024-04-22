@@ -1,37 +1,14 @@
 package Database;
 
-import Model.Toolcard;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class PublicObjectivecardDB {
-    private DBConn conn;
+    private final DBConn conn;
 
     public PublicObjectivecardDB(DBConn conn){
         this.conn = conn;
-    }
-
-    public void getPublicObjectiveList() {
-        if (conn.makeConnection()) {
-            String query = "select * from public_objectivecard;";
-            try {
-                Statement stmt = conn.getConn().createStatement();
-                ResultSet rs = stmt.executeQuery(query);
-                while (rs.next())
-                {
-                    int id = rs.getInt("idpublic_objectivecard");
-                    String name = rs.getString("name");
-                    String description = rs.getString("description");
-                    int points = rs.getInt("points");
-                    System.out.println(id + " - " + name + " - " + description + " - " + points);
-                }
-                stmt.close();
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-            }
-        }
     }
 
     public String getGamePublicObjectivecard(int gameId) {
@@ -48,7 +25,6 @@ public class PublicObjectivecardDB {
                     String name = rs.getString("name");
                     String description = rs.getString("description");
                     System.out.println(id + " - " + points + " - " + name + " - " + description);
-
                 }
                 stmt.close();
             } catch (SQLException e) {
