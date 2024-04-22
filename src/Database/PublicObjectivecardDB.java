@@ -1,46 +1,44 @@
 package Database;
 
-import Model.Toolcard;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ToolcardDB {
-    private DBConn conn;
+public class PublicObjectivecardDB {
+    private final DBConn conn;
 
-    public ToolcardDB(DBConn conn){
+    public PublicObjectivecardDB(DBConn conn){
         this.conn = conn;
     }
 
-    public Toolcard getGameToolcard(int gameId) {
-        Toolcard toolcard = null;
+    public String getGamePublicObjectivecard(int gameId) {
+
         if (conn.makeConnection()) {
-            String query = "select * from gametoolcard inner join toolcard on gametoolcard.idtoolcard = toolcard.idtoolcard where idgame = '"+gameId+"';";
+            String query = "select * from gameobjectivecard_public inner join public_objectivecard on gameobjectivecard_public.idpublic_objectivecard = public_objectivecard.idpublic_objectivecard where idgame = '"+gameId+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    int id = rs.getInt("idtoolcard");
-                    int seqnr = rs.getInt("seqnr");
+                    int id = rs.getInt("idpublic_objectivecard");
+                    int points = rs.getInt("points");
                     String name = rs.getString("name");
                     String description = rs.getString("description");
-                    toolcard = new Toolcard(id,seqnr,name,description);
+                    System.out.println(id + " - " + points + " - " + name + " - " + description);
                 }
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
         }
-        return toolcard;
+        return null;
     }
 
-    public void insertGameToolcard(int gameId, int toolcardId) {
+    public void insertGamePublicObjectivecard(int gameId, int publicObjectivecardId) {
         if (conn.makeConnection()) {
-            String query = "insert into gametoolcard (idtoolcard, idgame) VALUES ('"+toolcardId+"','"+gameId+"');";
+            String query = "insert into gameobjectivecard_public (idpublic_objectivecard, idgame) VALUES ('"+publicObjectivecardId+"','"+gameId+"');";
             try {
-                if(!checkIfGameToolcardExists(toolcardId, gameId)) {
+                if(!checkIfGamePublicObjetivecardExists(publicObjectivecardId, gameId)) {
                     Statement stmt = conn.getConn().createStatement();
                     stmt.executeUpdate(query);
                     stmt.close();
@@ -55,10 +53,10 @@ public class ToolcardDB {
         }
     }
 
-    public boolean checkIfGameToolcardExists(int toolcardId, int gameId) {
+    public boolean checkIfGamePublicObjetivecardExists(int publicObjectivecardId, int gameId) {
         boolean exist = false;
         if (conn.makeConnection()) {
-            String query = "select * from gameToolcard where idtoolcard='"+toolcardId+"' AND idgame='"+gameId+"';";
+            String query = "select * from gameobjectivecard_public where idpublic_objectivecard='"+publicObjectivecardId+"' AND idgame='"+gameId+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
