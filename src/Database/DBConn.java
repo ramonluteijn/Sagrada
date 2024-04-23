@@ -25,7 +25,7 @@ public class DBConn {
     public boolean makeConnection()
     {
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/2023_sagrada?user=root&password=");
+            conn = DriverManager.getConnection("jdbc:mysql://mysql.atd.avans.nl/s2160179?user=s2160179&password=ab12345");
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
