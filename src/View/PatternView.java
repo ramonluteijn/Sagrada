@@ -2,6 +2,8 @@ package View;
 
 import java.util.Random;
 
+import Controller.ColorBlindController;
+import Controller.MainController;
 import Controller.PatternCardController;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -25,7 +27,8 @@ public class PatternView extends BorderPane{
 	
 	
 	public PatternView(SelectPatternView selectPatternView) {
-		this.controller = new PatternCardController(); // make sure all patterncardControllers are unique. so that 1 player doesn't get the same card twice
+		this.controller = MainController.getPatternCardController();
+
 		
 		this.selectPatternView = selectPatternView;
 		
