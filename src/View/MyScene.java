@@ -12,6 +12,7 @@ public class MyScene extends Scene {
     
 	public MyScene() {
         super(new Pane());
+
         mainCon = new MainController();
         
         root = new BorderPane();
@@ -19,8 +20,9 @@ public class MyScene extends Scene {
         goToSelectPattern();
         
         setRoot(root);
+	}
         
-    }
+
 	
 	public void goToLogin() {
 		root.setTop(null); // resetting the menuBar
@@ -56,4 +58,5 @@ public class MyScene extends Scene {
 	public void goToChallengesView() {
 		root.setCenter(new ChallengesView(mainCon.challengeController));
 	}
+
 }
