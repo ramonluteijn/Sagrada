@@ -2,7 +2,6 @@ package View;
 
 import java.util.Random;
 
-import Controller.ColorBlindController;
 import Controller.MainController;
 import Controller.PatternCardController;
 import javafx.scene.layout.AnchorPane;

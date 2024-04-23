@@ -1,12 +1,16 @@
 package View;
 
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.geometry.Insets;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
+import javafx.scene.paint.Color;
 
 public class RoundTrackView extends HBox {
 
