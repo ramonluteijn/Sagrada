@@ -33,19 +33,10 @@ public class RoundTrackView extends HBox {
 
         this.getChildren().addAll(rounds);
 
-        addDiceToRound(1, Color.BLUE);
-        addDiceToRound(1, Color.GREEN);
-        addDiceToRound(1, Color.BLUE);
-        addDiceToRound(1, Color.GREEN);
-        addDiceToRound(2, Color.RED);
-        addDiceToRound(2, Color.YELLOW);
-        addDiceToRound(3, Color.GREEN);
-        addDiceToRound(3, Color.RED);
-        addDiceToRound(3, Color.YELLOW);
     }
 
-    public void addDiceToRound(int round, Color color) {
-        DieView dice = new DieView(3, color);
+    public void addDiceToRound(int round, Color color, int numberRolled) {
+        DieView dice = new DieView(numberRolled, color);
 
         double diceWidth = rounds.get(round - 1).getPrefWidth() / 2 - 10;
         double diceHeight = rounds.get(round - 1).getPrefHeight() / 5;
