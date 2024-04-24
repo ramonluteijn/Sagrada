@@ -16,9 +16,10 @@ public class LoginView extends BorderPane {
     private PasswordField password;
     private Label failedLabel;
     private AccountController accountController;
+    private AccountController account; // <-- Toegevoegd
 
     // constructor for the login view
-    public LoginView(MyScene scene) {
+    public LoginView(MyScene scene , AccountController accountController) {
         this.accountController = new AccountController();
         this.scene = scene;
         this.account = accountController; // <-- Toegevoegd

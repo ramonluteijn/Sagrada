@@ -1,5 +1,7 @@
 package Database;
 
+import Model.Account;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -60,13 +62,13 @@ public class AccountDB {
                 {
                     String name = rs.getString("username");
                     String pw = rs.getString("password");
-                    account = name + pw;
+                    //accountModel = (name, pw);
                 }
-                if (!account.isEmpty()){
-                    account = "bestaat";
-                } else {
-                    account = "bestaat niet";
-                }
+//                if (!accountModel.equals(null){
+//                    System.out.println("bestaat");
+//                } else {
+//                   // accountModel = "bestaat niet";
+//                }
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
