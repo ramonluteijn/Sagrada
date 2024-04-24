@@ -70,7 +70,7 @@ public class SelectPatternView extends BorderPane{
 		cards.add(new PatternCardView(this), 0, 0);
 		cards.add(new PatternCardView(this), 1, 0);
 		cards.add(new PatternCardView(this), 0, 1);
-		cards.add(new PatternCardView(this), 1, 1);
+		cards.add(new PatternCardView(this), 1, 1); // get this out of the db somehow
 		
 		return cards;
 	}

@@ -16,7 +16,7 @@ public class MyScene extends Scene {
         mainCon = new MainController();
         
         root = new BorderPane();
-//        goToLogin();
+        goToLobby();
         goToSelectPattern();
         
         setRoot(root);

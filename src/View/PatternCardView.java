@@ -1,7 +1,6 @@
 package View;
 
-import java.util.Random;
-
+import Controller.ColorblindController;
 import Controller.MainController;
 import Controller.PatternCardController;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +18,7 @@ import javafx.scene.text.Text;
 public class PatternCardView extends BorderPane{
 	
 	private PatternCardController controller;
+	private ColorblindController colorblindController;
 	
 	private SelectPatternView selectPatternView;
 	private final static int rows = 4;
@@ -27,7 +27,7 @@ public class PatternCardView extends BorderPane{
 	
 	public PatternCardView(SelectPatternView selectPatternView) {
 		this.controller = MainController.getPatternCardController();
-
+		this.colorblindController = MainController.colorblindController;
 		
 		this.selectPatternView = selectPatternView;
 		
@@ -46,9 +46,14 @@ public class PatternCardView extends BorderPane{
 		this.setCenter(getPattern());
 		this.setBottom(getCardInfo());
 		
+		colorblindController.colorblindProperty().addListener(e -> changeColorblindColors());
 		
 		
 		
+	}
+
+	private void changeColorblindColors() {
+		this.setCenter(getPattern());
 	}
 
 	private GridPane getPattern() {
@@ -59,28 +64,16 @@ public class PatternCardView extends BorderPane{
 		pattern.prefHeightProperty().bind(selectPatternView.heightProperty().divide(3));
 		pattern.prefWidthProperty().bind(selectPatternView.heightProperty().divide(3));
 		
-		
-		pattern.setBackground(new Background(new BackgroundFill(Color.LIGHTCORAL, null, null)));
-		Random rand = new Random();
-		
 		for (int y = 0; y < rows; y++) {
 			for (int x = 0; x < cols; x++) {
-				@SuppressWarnings("unused")
-				Color RAND_COLOR = Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
-				@SuppressWarnings("unused")
-				int RAND_NUMBER = rand.nextInt(7); // voor testen kan later weg
-				
-				
 				Color color = controller.getFieldColor(x, y);
 				int number = controller.getFieldNumber(x, y);
 				
 				PatternCardFieldView field = new PatternCardFieldView(color, number);
-				
+//				
 				pattern.add(field, x, y);
-				
 			}
 		}
-		
 		
 		
 		return pattern;
@@ -89,8 +82,8 @@ public class PatternCardView extends BorderPane{
 	private AnchorPane getCardInfo() {
 
 		AnchorPane info = new AnchorPane();
-		Text name = new Text("naampie");
-		Text difficulty = new Text("4");
+		Text name = new Text(controller.getName());
+		Text difficulty = new Text(controller.getDifficulty());
 	
 		AnchorPane.setTopAnchor(name, 0d);
 		AnchorPane.setTopAnchor(difficulty, 0d);

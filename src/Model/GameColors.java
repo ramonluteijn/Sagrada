@@ -6,9 +6,9 @@ public enum GameColors{
 	
 	
 	
-	RED("red", Color.RED, Color.ALICEBLUE, Color.GREEN, Color.GREY), 
-	YELLOW("yellow", Color.YELLOW, Color.BEIGE, Color.BLACK, Color.GREY), 
-	GREEN("green", Color.GREEN, Color.BLUE, Color.BLACK, Color.GREY), // TODO kleuren kloppen niet. en is niet compleet.
+	RED("red", Color.RED, Color.ALICEBLUE, Color.RED, Color.GREY), 
+	YELLOW("yellow", Color.YELLOW, Color.BEIGE, Color.YELLOW, Color.ORANGE), 
+	GREEN("green", Color.GREEN, Color.BLUE, Color.GREEN, Color.BLUE), // TODO kleuren kloppen niet. en is niet compleet.
 //	BLUE("blue", );
 //	PURPLE("purple", )
 	

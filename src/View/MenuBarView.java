@@ -2,6 +2,7 @@ package View;
 
 
 
+import Controller.MainController;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -53,6 +54,7 @@ public class MenuBarView extends MenuBar {
     private void switchColorBlindness() {
 		// TODO deze functie
     	System.out.println("switching colorblindness.........");
+    	MainController.colorblindController.switchColorblind();
 	}
 
 	private void gameStatsButton() {
