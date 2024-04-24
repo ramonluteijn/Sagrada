@@ -1,18 +1,28 @@
 package View;
 
+import Controller.AccountController;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class MyScene extends Scene {
-
     private Pane root;
+    private AccountController accountController;
+
     public MyScene() {
         super(new Pane());
         root = new Pane();
-//        root.getChildren().add(new LoginView(this));
-        root.getChildren().add(new WindowPatternView());
+ //      root.getChildren().add(new LoginView(this));
+        
+       root.getChildren().add(new GameView());
+//       root.getChildren().add(new WindowPatternView());
 
         this.setRoot(root);
+
+        // Maak een AccountController-object
+        accountController = new AccountController();
+
+        root.getChildren().add(new LoginView(this, accountController)); // Pass the accountController instance to LoginView constructor
     }
 
     public void goToLobby() {
@@ -22,6 +32,6 @@ public class MyScene extends Scene {
 
     public void openLoginView() {
         root.getChildren().remove(1);
-        root.getChildren().set(0,new LoginView(this));
+        root.getChildren().set(0,new LoginView(this, accountController)); // Pass the accountController instance to LoginView constructor
     }
 }

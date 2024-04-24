@@ -6,67 +6,106 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 
-public class GameView extends Pane {
+public class GameView extends BorderPane {
+	
+	private BorderPane centerpane;
 	
 	public GameView() {
 		
-		Parent root = this.setupRoot();
+		this.setupBorderPane();
 		
-		this.getChildren().add(root);
-		
+        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
+        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
+        this.setPrefSize(screenWidth, screenHeight);
 	}
 	
-	private Pane setupRoot() {
-		BorderPane root = new BorderPane();
+	private void setupBorderPane() {
 		//background colors = test
 		
-		Pane bottom = new Pane();
-		bottom.setPrefSize(400, 100);
-		bottom.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
-		Pane left = new Pane();
-		left.setPrefSize(100, 400);
-		left.setBackground(new Background(new BackgroundFill(Color.YELLOW, null, null)));
-		Pane right = new Pane();
-		right.setPrefSize(100, 400);
-		right.setBackground(new Background(new BackgroundFill(Color.BLUE, null, null)));
-		Pane center = new Pane();
-		center.setPrefSize(200, 200);
-		center.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+		Pane bottompane = this.getBottomPane();
+		VBox leftpane = this.getLeftPane();
+		VBox rightpane = this.getRightPane();
+		centerpane = this.getCenterPane();
 		Pane top = new Pane();
-		top.setPrefSize(400, 100);
-		top.setBackground(new Background(new BackgroundFill(Color.ORANGE, null, null)));
+		top.setPrefHeight(75);
 		
-		//bottom
-		//gamefooterview
+
+
+
 		
-		//left
-		//favortokenview
-		//cardsview
 		
-		//right
-		//diceview
-		
-		//center
-		//patterncard
-		
-		//top
-		//scoreview
-		//turnview
 		
 		//extra panes
 		//chatview
 		
-		root.setTop(top);
-		root.setLeft(left);
-		root.setRight(right);
-		root.setCenter(center);
-		root.setBottom(bottom);
+	//	this.setTop(top);
+		this.setLeft(leftpane);
+		this.setRight(rightpane);
+		this.setCenter(centerpane);
+		this.setBottom(bottompane);
 		
-		return root;
+	}
+	
+	private Pane getBottomPane() {
+		Pane bottom = new Pane();
+		bottom.setPrefSize(600, 100);
+		bottom.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+		
+		return bottom;
+		//gamefooterview
+	}
+	
+	private VBox getLeftPane() {
+		VBox left = new VBox();
+		left.setPrefSize(600, 600);
+		left.setBackground(new Background(new BackgroundFill(Color.YELLOW, null, null)));
+		
+		CardView cardview = new CardView();
+		
+		left.getChildren().add(cardview);
+		
+		return left;
+		//favortokenview
+
+	}
+	private VBox getRightPane() {
+		VBox right = new VBox();
+		right.setPrefSize(600, 600);
+		right.setBackground(new Background(new BackgroundFill(Color.AQUA, null, null)));
+		
+		DiceView diceview = new DiceView();
+		
+		
+		right.getChildren().add(diceview);
+		
+		return right;
+		//scoreview
+	}
+	
+	private BorderPane getCenterPane() {
+		BorderPane center = new BorderPane();
+		center.setPrefSize(400, 400);
+		center.setBackground(new Background(new BackgroundFill(Color.GREEN, null, null)));
+		
+		PatternView patternview = new PatternView(new SelectPatternView());
+		patternview.setPrefSize(720, 700);
+		WindowPatternView windowpatternview = new WindowPatternView();
+		windowpatternview.setPrefSize(720, 700);
+		
+		Pane pattern = new Pane();
+		pattern.getChildren().addAll(patternview, windowpatternview);
+		
+		center.setCenter(pattern);
+		
+		return center;
+	
+		//turnview
 	}
 	
 }

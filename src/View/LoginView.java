@@ -21,6 +21,7 @@ public class LoginView extends BorderPane {
     public LoginView(MyScene scene) {
         this.accountController = new AccountController();
         this.scene = scene;
+        this.account = accountController; // <-- Toegevoegd
         this.setCenter(getForm());
         double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
         double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
@@ -92,33 +93,21 @@ public class LoginView extends BorderPane {
         return buttons;
     }
 
-//todo
-    // length check
-    // ^ controller
-
-    //login user
     public void loginUser() {
-        //veranderen dmv controller etc
-//        String check = acc.getAccount(username.getText(), password.getText());
-//        if (check.equals("bestaat")) {
-//            scene.goToLobby();
-//        } else {
-//            failedLabel.setText("Inloggen mislukt, kijk of de juiste gegevens zijn ingevoerd.");
-//        }
-
+        if (account.authenticateUser(username.getText(), password.getText())) {
+            scene.goToLobby();
+        }
+        else {
+            failedLabel.setText("login failed, check your username and password.");
+        }
     }
 
-    //todo
-    // via controller en dan melding teruggeven.
-
-    // register user
     public void registerUser() {
-        //veranderen dmv controller etc
-//        if (!acc.checkIfUserExists(username.getText())) {
-//            acc.insertAccount(username.getText(), password.getText());
-//            scene.goToLobby();
-//        } else {
-//            failedLabel.setText("Deze gebruiker bestaat al, kies een andere naam.");
-//        }
+                if(account.registerUser(username.getText(), password.getText())) {
+            scene.goToLobby();
+        }
+        else {
+            failedLabel.setText("this username already exists, choose another one.");
+        }
     }
 }
