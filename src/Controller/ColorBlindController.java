@@ -3,7 +3,7 @@ package Controller;
 import Model.GameColors;
 import javafx.scene.paint.Color;
 
-public class ColorBlindController {
+public class ColorblindController {
 	private boolean colorblind;
 	
 	public Color getPatternCardColor(String name){

@@ -6,14 +6,14 @@ import javafx.scene.paint.Color;
 
 public class PatternCardController {
 	private PatternCard card;
-	private ColorBlindController colorBlindController;
+	private ColorblindController colorblindController;
 	
 	private final int rows = 4;
 	private final int cols = 5;
 	
-	public PatternCardController(ColorBlindController colorBlindController) {
+	public PatternCardController(ColorblindController colorblindController) {
 		card = new PatternCard("name", 4, getPatternCardFields());
-		this.colorBlindController = colorBlindController;
+		this.colorblindController = colorblindController;
 	}
 	
 	
@@ -32,7 +32,7 @@ public class PatternCardController {
 
 
 	public Color getFieldColor(int x, int y) {
-		return colorBlindController.getPatternCardColor(card.getColor(x, y));
+		return colorblindController.getPatternCardColor(card.getColor(x, y));
 	}
 	
 	public int getFieldNumber(int x, int y) {

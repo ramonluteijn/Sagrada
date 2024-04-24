@@ -11,7 +11,7 @@ public class MainController {
 	
 	public final PlayerController playerController = new PlayerController();
 	public final ToolcardController toolcardController = new ToolcardController();
-	public static final ColorBlindController colorblindController = new ColorBlindController();
+	public static final ColorblindController colorblindController = new ColorblindController();
 	
 	public static PatternCardController getPatternCardController(){
 		return new PatternCardController(colorblindController);
