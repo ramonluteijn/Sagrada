@@ -19,13 +19,13 @@ public class GameDieDB {
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next())
                 {
-                    int gameId = rs.getInt("idgane");
+                    int gameID = rs.getInt("idgane");
                     int dieNumber = rs.getInt("dienumber");
                     String dieColor = rs.getString("diecolor");
                     int eyes = rs.getInt("eyes");
                     int roundtrack = rs.getInt("roundtrack");
                     int roundID = rs.getInt("roundID");
-                    System.out.println(gameId + " - " + dieNumber + " - " + dieColor + " - " + eyes + " - " + roundtrack + " - " + roundID);
+                    System.out.println(gameID + " - " + dieNumber + " - " + dieColor + " - " + eyes + " - " + roundtrack + " - " + roundID);
                 }
                 stmt.close();
             } catch (SQLException e) {
