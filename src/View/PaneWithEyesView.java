@@ -3,8 +3,8 @@ package View;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 
-public abstract class PaneWithEyes extends Pane{
-	public PaneWithEyes(int number) {
+public abstract class PaneWithEyesView extends Pane{
+	public PaneWithEyesView(int number) {
 		addEyes(number);
 	}
 	

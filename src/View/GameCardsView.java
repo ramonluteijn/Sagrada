@@ -12,11 +12,11 @@ import javafx.scene.text.Font;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class Cards extends BorderPane {
+public abstract class GameCardsView extends BorderPane {
     private int width = 175;
 
     //base constructor
-    public Cards() {
+    public GameCardsView() {
         this.setBackground(new Background(new BackgroundFill(Color.SANDYBROWN, null, null)));
         this.setBorder(new Border(new BorderStroke(Color.TRANSPARENT, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(2))));
         this.setPrefSize(width, width + 75);

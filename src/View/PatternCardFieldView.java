@@ -4,7 +4,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 
-public class PatternCardFieldView extends PaneWithEyes{
+public class PatternCardFieldView extends PaneWithEyesView {
 
 	
 	public PatternCardFieldView(Color color, int number) {

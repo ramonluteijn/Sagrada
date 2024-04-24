@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderStrokeStyle;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 
-public class DieView extends PaneWithEyes {
+public class DieView extends PaneWithEyesView {
 
 	public DieView(int number, Color color) {
 		super(number); // sets the eyes of the die
