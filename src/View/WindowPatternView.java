@@ -16,17 +16,20 @@ public class WindowPatternView extends GridPane{
 	private static final int maxY = 4;
 	
 	//numbers will be the same as the PatternCardFields on the Pattern
-	private static final int WINDOWPATTERNVIEWFIELDHEIGHT = 50;
-	private static final int WINDOWPATTERNVIEWFIELDWIDTH = 50;
+	private static final int WINDOWPATTERNVIEWFIELDHEIGHT = 169;
+	private static final int WINDOWPATTERNVIEWFIELDWIDTH = 150;
 	
 	private Parent windowPatternViewArray[][];
 	
+
+	
 	public WindowPatternView() {
+
 
 		this.createButtons();
 		
 		//method addDieToWindow might be moved to controller
-//		this.addDieToWindow(2, 2, 6, Color.AQUA);
+		this.addDieToWindow(2, 2, 6, Color.AQUA);
 		
 		
 		//if a die is selected in GameView buttonsVisible = true
@@ -77,7 +80,7 @@ public class WindowPatternView extends GridPane{
 					if(windowPatternViewArray[xCor][yCor] instanceof Button) {
 						Button button = (Button)windowPatternViewArray[xCor][yCor];
 						button.setDisable(false);
-						button.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+						button.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THICK)));
 					}
 				}
 			}
