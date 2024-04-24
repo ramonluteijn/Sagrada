@@ -13,19 +13,19 @@ public class MainController {
 		PatternCardController patternCardController = new PatternCardController();
 		PlayerController playerController = new PlayerController();
 		ToolcardController toolcardController = new ToolcardController();
-		
+
 		viewController = new ViewController(
-				accountController, 
-				challengeController, 
-				chatController, 
-				diceController, 
-				gameController, 
-				objectiveCardController, 
-				patternCardController, 
-				playerController, 
+				accountController,
+				challengeController,
+				chatController,
+				diceController,
+				gameController,
+				objectiveCardController,
+				patternCardController,
+				playerController,
 				toolcardController);
 	}
-	
+
 	ViewController getViewController(){
 		return viewController;
 	}
