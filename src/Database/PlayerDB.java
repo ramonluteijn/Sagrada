@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class PlayerDB {
+
     private DBConn conn;
 
     public PlayerDB(DBConn conn){
@@ -31,10 +32,10 @@ public class PlayerDB {
         if (conn.makeConnection()) {
             String query = "update player set playstatus = '"+playstatus+"', score = '"+ score+"'where idplayer = '"+playerId+"';";
             try {
-                    Statement stmt = conn.getConn().createStatement();
-                    stmt.executeUpdate(query);
-                    stmt.close();
-                    System.out.println("geupdate");
+                Statement stmt = conn.getConn().createStatement();
+                stmt.executeUpdate(query);
+                stmt.close();
+                System.out.println("geupdate");
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -52,11 +53,12 @@ public class PlayerDB {
                 {
                     String name = rs.getString("username");
                     String playstatus = rs.getString("playstatus");
-                    String seqnr = rs.getString("seqnr");
+                    int seqnr = rs.getInt("seqnr");
                     String po_color = rs.getString("private_objective_color");
-                    String patterncardId = rs.getString("idpatterncard");
-                    String score = rs.getString("score");
-                    System.out.println(player = name + playstatus + seqnr + po_color + patterncardId + score);
+                    int patterncardId = rs.getInt("idpatterncard");
+                    int score = rs.getInt("score");
+                    System.out.println(player + " - " + name + " - " + playstatus + " - " + seqnr + " - " + po_color + " - " + patterncardId + " - " + score);
+
                 }
                 stmt.close();
             } catch (SQLException e) {
@@ -76,10 +78,12 @@ public class PlayerDB {
                 while (rs.next())
                 {
                     String name = rs.getString("username");
-                    String seqnr = rs.getString("seqnr");
-                    String patterncardId = rs.getString("idpatterncard");
-                    String score = rs.getString("score");
+                    int seqnr = rs.getInt("seqnr");
+                    int patterncardId = rs.getInt("idpatterncard");
+                    int score = rs.getInt("score");
                     System.out.println(players.add(name + seqnr + patterncardId + score));
+                    System.out.println(name + " - " + seqnr + " - " + patterncardId + " - " + score);
+
                 }
                 stmt.close();
             } catch (SQLException e) {

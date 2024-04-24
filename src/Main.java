@@ -1,3 +1,5 @@
+
+
 import Database.DBConn;
 import View.MyScene;
 import javafx.application.Application;
@@ -9,14 +11,14 @@ public class Main extends Application{
         DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
     }
 
-//    @Override
+   
+    //@Override
+
     public void start(Stage stage) throws Exception {
         stage.setTitle("Sagrada");
-        stage.setMaximized(true);
         stage.setScene(new MyScene());
+//        stage.setScene(new GameStatsScene());
+        stage.setMaximized(true);
         stage.show();
     }
 }
-
-
-
