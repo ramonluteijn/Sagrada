@@ -14,15 +14,16 @@ public class MyScene extends Scene {
         root = new Pane();
  //      root.getChildren().add(new LoginView(this));
         
-       root.getChildren().add(new GameView());
+      // root.getChildren().add(new GameView());
 //       root.getChildren().add(new WindowPatternView());
 
-        this.setRoot(root);
 
         // Maak een AccountController-object
         accountController = new AccountController();
 
         root.getChildren().add(new LoginView(this, accountController)); // Pass the accountController instance to LoginView constructor
+        this.setRoot(root);
+
     }
 
     public void goToLobby() {

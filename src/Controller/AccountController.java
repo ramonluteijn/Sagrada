@@ -2,7 +2,7 @@ package Controller;
 
 import Database.AccountDB;
 import Database.DBConn;
-import Model.Account;
+import Model.AccountModel;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -12,14 +12,14 @@ public class AccountController {
 
     public AccountController() {
         // Create a DBConn instance.
-        DBConn dbConn = new DBConn("jdbc:mysql://localhost/2023_sagrada?user=root&password=root");
+        DBConn dbConn = new DBConn("com.mysql.cj.jdbc.Driver");
 
         // Pass DBConn to the constructor of AccountDB
         this.accountDB = new AccountDB(dbConn);
     }
 
     public boolean authenticateUser(String username, String password) {
-        Account account = accountDB.getAccount(username, password);
+        AccountModel account = accountDB.getAccount(username, password);
         return account != null;
     }
 
@@ -36,7 +36,7 @@ public class AccountController {
         }
     }
 
-    public Account getStatistics(String username) {
+    public AccountModel getStatistics(String username) {
         if(accountDB.checkIfUserExists(username)) {
             int winAmount = accountDB.getWinAmount(username);
             int lossAmount = accountDB.getLossAmount(username);
@@ -45,17 +45,17 @@ public class AccountController {
             String mostPlacedColorAsStr = accountDB.getMostPlacedDieColor(username);
             Color mostPlacedColor = mostPlacedColorAsStr != null ? Color.decode(mostPlacedColorAsStr) : null;
 
-            return new Account();
+            return new AccountModel();
         }
         return null;
     }
 
-    public ArrayList<Account> getResult(String input) {
-        ArrayList<Account> results = new ArrayList<>();
+    public ArrayList<AccountModel> getResult(String input) {
+        ArrayList<AccountModel> results = new ArrayList<>();
         String userName = accountDB.getAccountsBySearch(input);
 
         if(userName != null && !userName.isEmpty()){
-            Account account = getStatistics(userName);
+            AccountModel account = getStatistics(userName);
             if(account != null){
                 results.add(account);
             }

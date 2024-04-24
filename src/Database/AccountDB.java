@@ -1,6 +1,6 @@
 package Database;
 
-import Model.Account;
+import Model.AccountModel;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,24 +51,19 @@ public class AccountDB {
         return exist;
     }
 
-    public Account getAccount(String username, String password) {
-        Account accountModel = null;
+    public AccountModel getAccount(String username, String password) {
+        AccountModel accountModel = null;
         if (conn.makeConnection()) {
-            String query = "select * from account where username='"+username+"' AND password='"+password+"';";
+            String query = "select * from account where username='"+username+"' and password='"+password+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
-                while (rs.next())
-                {
-                    String name = rs.getString("username");
-                    String pw = rs.getString("password");
-                    //accountModel = (name, pw);
+                if (rs.next()) {
+                    accountModel = new AccountModel();
+                    accountModel.setUsername(rs.getString("username"));
+                    accountModel.setPassword(rs.getString("password"));
+                    // Set other fields of the AccountModel based on the query result
                 }
-//                if (!accountModel.equals(null){
-//                    System.out.println("bestaat");
-//                } else {
-//                   // accountModel = "bestaat niet";
-//                }
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
