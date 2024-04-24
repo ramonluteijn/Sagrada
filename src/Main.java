@@ -9,7 +9,7 @@ public class Main extends Application{
         DBConn conn = new DBConn("com.mysql.cj.jdbc.Driver");
     }
 
-//    @Override
+    //    @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Sagrada");
         stage.setMaximized(true);
@@ -17,6 +17,3 @@ public class Main extends Application{
         stage.show();
     }
 }
-
-
-
