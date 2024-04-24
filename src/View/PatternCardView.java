@@ -16,7 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-public class PatternView extends BorderPane{
+public class PatternCardView extends BorderPane{
 	
 	private PatternCardController controller;
 	
@@ -25,7 +25,7 @@ public class PatternView extends BorderPane{
 	private final static int cols = 5;
 	
 	
-	public PatternView(SelectPatternView selectPatternView) {
+	public PatternCardView(SelectPatternView selectPatternView) {
 		this.controller = MainController.getPatternCardController();
 
 		

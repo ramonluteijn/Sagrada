@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class SelectPatternView extends BorderPane{
-	private PatternView selectedPatternCard = null;
+	private PatternCardView selectedPatternCard = null;
 	private Button selectButton = new Button("Continue");;
 	
 	public SelectPatternView(){
@@ -67,16 +67,16 @@ public class SelectPatternView extends BorderPane{
 		cards.setPadding(new Insets(10, 10, 10, 10));
 		System.out.println(this.prefHeightProperty());
 		
-		cards.add(new PatternView(this), 0, 0);
-		cards.add(new PatternView(this), 1, 0);
-		cards.add(new PatternView(this), 0, 1);
-		cards.add(new PatternView(this), 1, 1);
+		cards.add(new PatternCardView(this), 0, 0);
+		cards.add(new PatternCardView(this), 1, 0);
+		cards.add(new PatternCardView(this), 0, 1);
+		cards.add(new PatternCardView(this), 1, 1);
 		
 		return cards;
 	}
 	
 
-	public void setSelectedPatternCard(PatternView patternCard) {
+	public void setSelectedPatternCard(PatternCardView patternCard) {
 		if (this.selectedPatternCard != null) {  // resets the bordercolor of the unselected patternCard. but only if it exists
 			this.selectedPatternCard.setBorder(new Border(new BorderStroke(Color.BISQUE, // color is the same as the background color
 		            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderStroke.THICK))); 
