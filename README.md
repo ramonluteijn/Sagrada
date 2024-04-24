@@ -24,6 +24,9 @@ dan kan de ander weer verder met het afronden van dat stukje.
 
 - werk op een overzichterlijke manier.
 
+## Voor eclipse
+	- compiler aanpassen 1.8
+	
 ## hoe te updaten
 - stash je zooi op je eigen branch -> is het opslaan van je code voordat je iets kwijt bent als je wilt gaan mergen.
 - kijk of je op de branch zit die je wilt updaten

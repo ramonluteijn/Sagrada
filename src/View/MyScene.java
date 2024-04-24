@@ -10,9 +10,19 @@ public class MyScene extends Scene {
 
     public MyScene() {
         super(new Pane());
+        FavorTokensView tokens = new FavorTokensView();
+        
         root = new Pane();
+        root.getChildren().add(tokens);
+ 
+        tokens.createFavortoken(1);
+        tokens.drawFavortokens();
+        
+
+      //  root = new Pane();
 //        root.getChildren().add(new LoginView(this));
-        root.getChildren().add(new WindowPatternView());
+       // root.getChildren().add(new WindowPatternView());
+
         this.setRoot(root);
 
         // Maak een AccountController-object
