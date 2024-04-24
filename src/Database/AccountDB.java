@@ -52,31 +52,25 @@ public class AccountDB {
         return exist;
     }
 
-    public String getAccount(String username, String password) {
-        String account = "";
+    public Account getAccount(String username, String password) {
+        Account accountModel = null;
         if (conn.makeConnection()) {
-            String query = "select * from account where username='"+username+"';";
+            String query = "select * from account where username='"+username+"' and password='"+password+"';";
             try {
                 Statement stmt = conn.getConn().createStatement();
                 ResultSet rs = stmt.executeQuery(query);
-                while (rs.next())
-                {
-                    String name = rs.getString("username");
-                    String pw = rs.getString("password");
-                    account = name + pw;
-                }
-                if (!account.equals("")){
-                    account = "bestaat";
-                } else {
-                    account = "bestaat niet";
+                if (rs.next()) {
+                    accountModel = new Account();
+                    accountModel.setUsername(rs.getString("username"));
+                    accountModel.setPassword(rs.getString("password"));
+                    // Set other fields of the AccountModel based on the query result
                 }
                 stmt.close();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
-                account = "bestaat niet";
             }
         }
-        return account;
+        return accountModel;
     }
 
 
